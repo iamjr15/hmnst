@@ -1,0 +1,119 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@android:color/holo_blue_light</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="LoginSignUpButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SignUpButton" parent="LoginSignUpButton">
+        <item name="android:background">@android:color/holo_red_light</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="LoginButton" parent="LoginSignUpButton">
+        <item name="android:background">#FFF0</item>
+    </style>
+
+    <style name="loginActivity">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="loginTextView" parent="loginActivity">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="loginEditText" parent="loginActivity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:ems">10</item>
+    </style>
+
+    <style name="nextButton" parent="loginActivity">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+    </style>
+
+    <style name="Title" parent="loginActivity">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="verifyTextView" parent="loginActivity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginRight">32dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="ResendButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">64dp</item>
+        <item name="android:layout_marginLeft">64dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">64dp</item>
+        <item name="android:layout_marginRight">64dp</item>
+    </style>
+
+    <style name="otpStyle">
+        <item name="android:layout_width">40sp</item>
+        <item name="android:layout_height">42sp</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--<style name="AppBottomSheetDialogTheme"-->
+        <!--parent="Theme.Design.Light.BottomSheetDialog">-->
+        <!--<item name="bottomSheetStyle">@style/AppModalStyle</item>-->
+    <!--</style>-->
+
+    <!--<style name="AppModalStyle"-->
+        <!--parent="Widget.Design.BottomSheet.Modal">-->
+        <!--<item name="android:background">@drawable/rounded_dialog</item>-->
+    <!--</style>-->
+
+
+
+</resources>

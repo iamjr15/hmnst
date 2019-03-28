@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="capitals">
+        <item>Hyderabad</item>
+        <item>Itanagar</item>
+        <item>Dispur</item>
+        <item>Patna</item>
+        <item>Raipur</item>
+        <item>Panaji</item>
+        <item>Gandhinagar</item>
+        <item>Chandigarh</item>
+        <item>Shimla</item>
+        <item>Srinagar</item>
+        <item>Ranchi</item>
+        <item>Bengaluru</item>
+        <item>Trivandrum</item>
+        <item>Bhopal</item>
+        <item>Mumbai</item>
+        <item>Imphal</item>
+        <item>Shillong</item>
+        <item>Aizawl</item>
+        <item>Kohima</item>
+        <item>Bhubaneswar</item>
+        <item>Chandigarh</item>
+        <item>Jaipur</item>
+        <item>Gangtok</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+        <item>Agartala</item>
+        <item>Lucknow</item>
+        <item>Kolkata</item>
+        <item>Dehradun</item>
+    </array>
+</resources>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:scrollbars="vertical"
+        tools:context=".SignUpActivity">
+
+        <TextView
+            android:id="@+id/signup_tv"
+            style="@style/Title"
+            android:layout_marginTop="16dp"
+            android:text="@string/signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/loginTextView"
+            android:text="@string/introduce_yourself"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_tv" />
+
+        <EditText
+            android:id="@+id/firstname_et"
+            style="@style/loginEditText"
+            android:hint="@string/first_name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+
+        <EditText
+            android:id="@+id/lastname_et"
+            style="@style/loginEditText"
+            android:hint="@string/last_name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstname_et" />
+
+        <TextView
+            android:id="@+id/dob_tv"
+            style="@style/loginTextView"
+            android:text="@string/date_of_birth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname_et" />
+
+        <EditText
+            android:id="@+id/dob_et"
+            style="@style/loginEditText"
+            android:hint="@string/select_date_of_birth"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dob_tv" />
+
+        <TextView
+            android:id="@+id/gender_tv"
+            style="@style/loginTextView"
+            android:text="@string/gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dob_et" />
+
+        <EditText
+            android:id="@+id/gender_et"
+            style="@style/loginEditText"
+            android:hint="@string/select_your_gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender_tv" />
+
+        <TextView
+            android:id="@+id/password_tv"
+            style="@style/loginTextView"
+            android:text="@string/password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender_et" />
+
+        <EditText
+            android:id="@+id/passwordSignUp_et"
+            style="@style/loginEditText"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_tv" />
+
+        <TextView
+            android:id="@+id/phonenumber_tv"
+            style="@style/loginTextView"
+            android:text="@string/phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordSignUp_et" />
+
+        <EditText
+            android:id="@+id/phonenumber_et"
+            style="@style/loginEditText"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phonenumber_tv" />
+
+        <Button
+            android:id="@+id/next_signup_button"
+            style="@style/nextButton"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phonenumber_et" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

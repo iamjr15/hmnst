@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "310091122138",
+    "firebase_url": "https://hmnst001.firebaseio.com",
+    "project_id": "hmnst001",
+    "storage_bucket": "hmnst001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310091122138:android:885175f8dc5c6477",
+        "android_client_info": {
+          "package_name": "com.example.avocode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310091122138-c487eq48f5gm2qa2djs0g5ndjofrms00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPng2_q4AhMDXeHtwOSJyjDc_fUQ9E1ts"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
