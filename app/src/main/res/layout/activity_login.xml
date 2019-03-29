@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/textViewLogin"
         style="@style/Title"
+        android:fontFamily="@font/mr"
         android:text="@string/login"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,6 +20,7 @@
     <TextView
         android:id="@+id/textViewPhone"
         style="@style/loginTextView"
+        android:fontFamily="@font/mr"
         android:text="@string/phone_number"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="0dp"
             android:ems="10"
+            android:fontFamily="@font/mr"
             android:paddingStart="4dp"
             android:paddingEnd="0dp"
             android:text="+91" />
@@ -49,6 +52,7 @@
         <EditText
             android:id="@+id/editTextPhone"
             style="@style/loginEditText"
+            android:fontFamily="@font/ml"
             android:inputType="phone"
             android:paddingStart="40dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +65,7 @@
     <TextView
         android:id="@+id/textViewPassword"
         style="@style/loginTextView"
+        android:fontFamily="@font/mr"
         android:text="@string/password"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +74,7 @@
     <EditText
         android:id="@+id/editTextPassword"
         style="@style/loginEditText"
+        android:fontFamily="@font/ml"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +85,7 @@
         android:id="@+id/buttonNext"
         style="@style/nextButton"
         android:background="@drawable/rounded_button"
+        android:fontFamily="@font/mr"
         android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

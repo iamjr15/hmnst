@@ -2,11 +2,13 @@ package com.example.avocode.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -121,7 +124,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onClick(View v) {
                     closeDrawer();
-                    new AlertDialog.Builder(HomeActivity.this)
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this)
                             .setTitle(getString(R.string.attention))
                             .setMessage(getString(R.string.message_sign_out))
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -146,7 +150,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             .setNegativeButton(android.R.string.no, null)
                             .show();
 
-
+                    if (alertDialog.getWindow() != null) {
+                        TextView alertTitle = alertDialog.getWindow().findViewById(R.id.alertTitle);
+                        TextView message = alertDialog.getWindow().findViewById(android.R.id.message);
+                        Button button1 = alertDialog.getWindow().findViewById(android.R.id.button1);
+                        Button button2 = alertDialog.getWindow().findViewById(android.R.id.button2);
+                        Typeface face = ResourcesCompat.getFont(HomeActivity.this, R.font.mr);
+                        alertTitle.setTypeface(face);
+                        button2.setTypeface(face);
+                        button1.setTypeface(face);
+                        message.setTypeface(face);
+                    }
                 }
             });
 
@@ -180,7 +194,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void showCapitals() {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(HomeActivity.this);
         builderSingle.setTitle("Select One City");
-        final ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(HomeActivity.this, R.array.capitals, android.R.layout.select_dialog_singlechoice);
+        final ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(HomeActivity.this, R.array.capitals, R.layout.item_capital);
 
         builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -195,7 +209,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 textViewCity.setText(String.valueOf(arrayAdapter.getItem(which)));
             }
         });
-        builderSingle.show();
+        AlertDialog alertDialog = builderSingle.show();
+        if (alertDialog.getWindow() != null) {
+            TextView alertTitle = alertDialog.getWindow().findViewById(R.id.alertTitle);
+            Button button2 = alertDialog.getWindow().findViewById(android.R.id.button2);
+            Typeface face = ResourcesCompat.getFont(this, R.font.mr);
+            alertTitle.setTypeface(face);
+            button2.setTypeface(face);
+        }
     }
 
 }

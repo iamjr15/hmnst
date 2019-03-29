@@ -32,6 +32,7 @@
             android:id="@+id/textViewFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mr"
             android:gravity="center"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:text="Name"
@@ -44,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/mr"
             android:text="1234567890"
             android:textColor="@color/black"
             android:textSize="10sp"
@@ -57,12 +59,12 @@
         android:orientation="vertical">
 
         <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/materialSignOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/size_16"
             android:paddingTop="@dimen/size_12"
             android:paddingEnd="@dimen/size_16"
-            android:id="@+id/materialSignOut"
             android:paddingBottom="@dimen/size_12">
 
             <LinearLayout
@@ -81,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/size_16"
+                    android:fontFamily="@font/mr"
                     android:text="@string/sign_out"
                     android:textColor="@color/black"
                     android:textSize="12sp"

@@ -288,8 +288,6 @@ public class SignUpThreeActivity extends AppCompatActivity {
         switch (uiState) {
             case STATE_INITIALIZED:
                 // Initialized state, show only the phone number field and start button
-                buttonSendCode.setText(getString(R.string.send_code));
-                buttonSendCode.setVisibility(View.VISIBLE);
                 enableViews(buttonSendCode);
                 disableViews(textView, linearOTP);
                 break;
