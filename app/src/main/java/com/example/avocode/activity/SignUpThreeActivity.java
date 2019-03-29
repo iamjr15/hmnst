@@ -248,7 +248,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                util.toast("Invalid code.");
+                                util.toast(getString(R.string.invalid_code));
                                 viewOTP.setText("");
                             }
                             updateUI(STATE_SIGNIN_FAILED);
