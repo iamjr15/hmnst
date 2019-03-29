@@ -96,7 +96,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
         util.showLoading(getString(R.string.please_wait));
         String phone = getIntent().getStringExtra("phone");
         if (!checkEmptyStrings(phone)) {
-            editTextPhone.setText(phone);
+            editTextPhone.setText("+91 " + phone);
             buttonSendCode.setVisibility(View.GONE);
         } else {
             buttonSendCode.setVisibility(View.VISIBLE);
