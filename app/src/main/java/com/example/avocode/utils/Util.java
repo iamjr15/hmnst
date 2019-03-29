@@ -50,9 +50,7 @@ public class Util {
 
     public void showLoading(String msg) {
         try {
-            if (progressDialog == null) {
-                progressDialog = ProgressDialog.show(context, "", msg, true);
-            }
+            progressDialog = ProgressDialog.show(context, "", msg, true);
         } catch (Exception ignore) {
         }
     }

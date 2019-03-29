@@ -93,15 +93,20 @@ public class SignUpThreeActivity extends AppCompatActivity {
             onRestoreInstanceState(savedInstanceState);
         }
         util = new Util(this);
+        util.showLoading(getString(R.string.please_wait));
         String phone = getIntent().getStringExtra("phone");
         if (!checkEmptyStrings(phone)) {
             editTextPhone.setText(phone);
+            buttonSendCode.setVisibility(View.GONE);
+        } else {
+            buttonSendCode.setVisibility(View.VISIBLE);
         }
         mAuth = FirebaseAuth.getInstance();
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential credential) {
+                util.showLoading(getString(R.string.message_creating_profile));
                 Log.d(TAG, "onVerificationCompleted:" + credential);
                 mVerificationInProgress = false;
                 updateUI(STATE_VERIFY_SUCCESS, credential);
@@ -125,6 +130,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
             @Override
             public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
                 Log.d(TAG, "onCodeSent:" + verificationId);
+                util.hideLoading();
                 startTimer();
                 // Save verification ID and resending token so we can use them later
                 mVerificationId = verificationId;
@@ -132,6 +138,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
                 updateUI(STATE_CODE_SENT);
             }
         };
+        startPhoneNumberVerification(editTextPhone.getText().toString());
     }
 
     @OnClick(R.id.buttonSignUp)
@@ -282,6 +289,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
             case STATE_INITIALIZED:
                 // Initialized state, show only the phone number field and start button
                 buttonSendCode.setText(getString(R.string.send_code));
+                buttonSendCode.setVisibility(View.VISIBLE);
                 enableViews(buttonSendCode);
                 disableViews(textView, linearOTP);
                 break;
@@ -293,7 +301,9 @@ public class SignUpThreeActivity extends AppCompatActivity {
             case STATE_VERIFY_FAILED:
                 // Verification has failed, show all options
                 buttonSendCode.setText(getString(R.string.resend_code));
+                buttonSendCode.setVisibility(View.VISIBLE);
                 enableViews(buttonSendCode, linearOTP);
+                util.hideLoading();
                 util.toast(getString(R.string.message_verification_failed));
                 break;
             case STATE_VERIFY_SUCCESS:
@@ -351,7 +361,6 @@ public class SignUpThreeActivity extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             final StorageReference storageReference = storage.getReference();
             //displaying a progress dialog while upload is going on
-            util.showLoading(getString(R.string.message_creating_profile));
 
             final StorageReference riversRef = storageReference.child("images/" + filePath.toString().substring(filePath.toString().lastIndexOf("/") + 1));
             riversRef.putFile(filePath)

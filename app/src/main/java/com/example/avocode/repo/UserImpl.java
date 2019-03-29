@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nullable;
+
 //helper class for login and registration purpose
 public class UserImpl implements IUserRepository {
 
@@ -57,11 +58,11 @@ public class UserImpl implements IUserRepository {
                     if (document != null && document.exists()) {
                         // user already exist in database
                         util.toast(activity.getString(R.string.message_user_already_exist));
+                        util.hideLoading();
                     } else {
                         //user does not exist in database
                         addNewRegisteredUser(firestoreUserModel);
                     }
-                    util.hideLoading();
                 } else {
                     //user does not exist in database
                     addNewRegisteredUser(firestoreUserModel);
@@ -95,6 +96,7 @@ public class UserImpl implements IUserRepository {
                 intent.putExtra(activity.getString(R.string.password_label), firestoreUserModel.getPassword());
                 intent.putExtra(activity.getString(R.string.phone_label), firestoreUserModel.getPhone());
                 intent.putExtra(activity.getString(R.string.uriPath), firestoreUserModel.getUriPath());
+                util.hideLoading();
                 // set the new task and clear flags
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 activity.startActivity(intent);
@@ -102,6 +104,7 @@ public class UserImpl implements IUserRepository {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                util.hideLoading();
                 Log.d(TAG, "Error has occured " + e.getMessage());
                 util.toast(activity.getString(R.string.message_user_registration_failed));
             }
