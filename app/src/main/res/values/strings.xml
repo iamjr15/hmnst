@@ -55,4 +55,6 @@
     <string name="sign_out">Sign Out</string>
     <string name="attention">Attention!</string>
     <string name="message_sign_out">Are you sure want to sign out from the app?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

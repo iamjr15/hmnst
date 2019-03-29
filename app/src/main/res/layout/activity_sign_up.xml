@@ -54,11 +54,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lastname_et" />
 
-        <EditText
+        <!--<EditText-->
+        <!--android:id="@+id/dob_et"-->
+        <!--style="@style/loginEditText"-->
+        <!--android:hint="@string/select_date_of_birth"-->
+        <!--android:inputType="date"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/dob_tv" />-->
+        <TextView
             android:id="@+id/dob_et"
             style="@style/loginEditText"
             android:hint="@string/select_date_of_birth"
-            android:inputType="date"
+            android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dob_tv" />
@@ -70,13 +78,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dob_et" />
 
-        <EditText
+        <!--<EditText-->
+        <!--android:id="@+id/gender_et"-->
+        <!--style="@style/loginEditText"-->
+        <!--android:hint="@string/select_your_gender"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/gender_tv" />-->
+
+        <RadioGroup
             android:id="@+id/gender_et"
-            style="@style/loginEditText"
-            android:hint="@string/select_your_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/gender_tv">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/male"
+                android:buttonTint="@color/black"/>
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/female"
+                android:buttonTint="@color/black"/>
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/password_tv"
@@ -104,6 +140,7 @@
         <EditText
             android:id="@+id/phonenumber_et"
             style="@style/loginEditText"
+            android:hint="+91"
             android:inputType="phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

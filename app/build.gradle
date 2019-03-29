@@ -3,7 +3,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.avocode"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -48,6 +48,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:18.1.0'
     implementation 'com.google.firebase:firebase-storage:16.1.0'
     implementation 'com.asksira.android:dropdownview:1.0.3'
-
+    implementation 'com.android.support:multidex:1.0.3'
 }
 apply plugin: 'com.google.gms.google-services'
