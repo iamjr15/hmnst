@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -151,13 +152,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     @OnClick(R.id.cardViewLocation)
     public void getLocationClicked() {
-        if (!util.isGpsEnable()) {
-            displayLocationSettingsRequest(getActivity());
-        } else if (!util.isMobileDataEnabled() && !util.isWifiEnable()) {
-            util.toast(getString(R.string.message_turn_on_mobile_data_or_wifi));
-        } else {
-            getLocation();
-        }
+        getLocation();
     }
 
 
@@ -185,6 +180,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
             googleMap.getUiSettings().setRotateGesturesEnabled(true);
             util.hideLoading();
+            getLocation();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,34 +194,40 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void getLocation() {
-        Dexter.withActivity(getActivity())
-                .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse response) {
-                        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(Objects.requireNonNull(getActivity()));
-                        mLocationCallback = new LocationCallback() {
-                            @Override
-                            public void onLocationResult(LocationResult locationResult) {
-                                super.onLocationResult(locationResult);
-                                onNewLocation(locationResult.getLastLocation());
-                            }
-                        };
-                        createLocationRequest();
-                        getLastLocation();
-                        requestLocationUpdates();
-                    }
+        if (!util.isGpsEnable()) {
+            displayLocationSettingsRequest(getActivity());
+        } else if (!util.isMobileDataEnabled() && !util.isWifiEnable()) {
+            util.toast(getString(R.string.message_turn_on_mobile_data_or_wifi));
+        } else {
+            Dexter.withActivity(getActivity())
+                    .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    .withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse response) {
+                            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(Objects.requireNonNull(getActivity()));
+                            mLocationCallback = new LocationCallback() {
+                                @Override
+                                public void onLocationResult(LocationResult locationResult) {
+                                    super.onLocationResult(locationResult);
+                                    onNewLocation(locationResult.getLastLocation());
+                                }
+                            };
+                            createLocationRequest();
+                            getLastLocation();
+                            requestLocationUpdates();
+                        }
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse response) {
-                        util.showSettingsDialog(getActivity());
-                    }
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse response) {
+                            util.showSettingsDialog(getActivity());
+                        }
 
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-                        token.continuePermissionRequest();
-                    }
-                }).check();
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+        }
     }
 
     public void createLocationRequest() {
@@ -243,6 +245,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private void getLastLocation() {
         try {
             mFusedLocationClient.getLastLocation()
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            util.log("onFailure", "onFailure");
+                        }
+                    })
                     .addOnCompleteListener(new OnCompleteListener<Location>() {
                         @Override
                         public void onComplete(@NonNull Task<Location> task) {

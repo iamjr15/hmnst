@@ -48,7 +48,7 @@
     <string name="message_user_registration_failed">User registration failed. Please Try again later</string>
     <string name="message_user_already_exist">User already exist</string>
     <string name="message_logging">Logging you in…</string>
-    <string name="message_credential_invalid">Phone number or Password must be wrong</string>
+    <string name="message_credential_invalid">Phone number or Password is wrong</string>
     <string name="please_wait">Please wait…</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>

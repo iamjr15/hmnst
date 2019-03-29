@@ -52,7 +52,7 @@
             android:background="@drawable/rounded_border"
             android:text="@string/send_code"
             android:textColor="@color/black"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textView"
