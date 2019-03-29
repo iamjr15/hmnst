@@ -30,6 +30,7 @@
         style="@style/loginEditText"
         android:inputType="phone"
         android:textAlignment="center"
+        android:enabled="false"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

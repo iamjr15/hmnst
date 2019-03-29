@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             editTextPassword.requestFocus();
         } else {
             UserImpl userImplementation = new UserImpl(LoginActivity.this);
-            userImplementation.getLoginUserByPhone(editTextPhone.getText().toString().trim(), editTextPassword.getText().toString().trim());
+            userImplementation.getLoginUserByPhone("+91" + editTextPhone.getText().toString().trim(), editTextPassword.getText().toString().trim());
         }
     }
 }

@@ -95,7 +95,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
         util = new Util(this);
         String phone = getIntent().getStringExtra("phone");
         if (!checkEmptyStrings(phone)) {
-            editTextPhone.setText(phone);
+            editTextPhone.setText("+91 " + phone);
         }
         mAuth = FirebaseAuth.getInstance();
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -324,7 +324,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
     }
 
     private boolean validatePhoneNumber() {
-        String phoneNumber = editTextPhone.getText().toString();
+        String phoneNumber = "+91" + editTextPhone.getText().toString();
         if (TextUtils.isEmpty(phoneNumber)) {
             editTextPhone.setError(getString(R.string.invalid_phone));
             return false;

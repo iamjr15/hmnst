@@ -115,7 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
         } else {
             util.showLoading(getString(R.string.please_wait));
             FirebaseFirestore db = AvaApplication.getInstance().getDbInstance();
-            Task<DocumentSnapshot> docSnapshot = db.collection(Constants.USER_COLLECTION).document(editTextPhone.getText().toString()).get();
+            Task<DocumentSnapshot> docSnapshot = db.collection(Constants.USER_COLLECTION).document("+91" + editTextPhone.getText().toString()).get();
             docSnapshot.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
