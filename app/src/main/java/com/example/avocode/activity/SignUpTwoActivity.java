@@ -47,17 +47,17 @@ public class SignUpTwoActivity extends AppCompatActivity {
         util = new Util(this);
     }
 
-    @OnClick(R.id.nextSignUp2_btn)
+    @OnClick(R.id.buttonNext)
     public void onNextClicked() {
         if (!checkEmptyStrings(uriPath)) {
             Intent intent = new Intent(SignUpTwoActivity.this, SignUpThreeActivity.class);
-            intent.putExtra("firstName", getIntent().getStringExtra("firstName"));
-            intent.putExtra("lastName", getIntent().getStringExtra("lastName"));
-            intent.putExtra("gender", getIntent().getStringExtra("gender"));
-            intent.putExtra("dob", getIntent().getStringExtra("dob"));
-            intent.putExtra("password", getIntent().getStringExtra("password"));
-            intent.putExtra("phone", getIntent().getStringExtra("phone"));
-            intent.putExtra("uriPath", uriPath);
+            intent.putExtra(getString(R.string.firstName), getIntent().getStringExtra(getString(R.string.firstName)));
+            intent.putExtra(getString(R.string.last_name), getIntent().getStringExtra(getString(R.string.last_name)));
+            intent.putExtra(getString(R.string.gender_label), getIntent().getStringExtra(getString(R.string.gender_label)));
+            intent.putExtra(getString(R.string.dob), getIntent().getStringExtra(getString(R.string.dob)));
+            intent.putExtra(getString(R.string.password_label), getIntent().getStringExtra(getString(R.string.password_label)));
+            intent.putExtra(getString(R.string.phone_label), getIntent().getStringExtra(getString(R.string.phone_label)));
+            intent.putExtra(getString(R.string.uriPath), uriPath);
             startActivity(intent);
         } else {
             util.toast(getString(R.string.message_add_picture));
@@ -90,7 +90,7 @@ public class SignUpTwoActivity extends AppCompatActivity {
                     }
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
+                util.toast(result.getError().getLocalizedMessage());
             }
         }
     }
@@ -98,8 +98,7 @@ public class SignUpTwoActivity extends AppCompatActivity {
     private void storeImage(Bitmap image) {
         File pictureFile = getOutputMediaFile();
         if (pictureFile == null) {
-            Log.d(TAG,
-                    "Error creating media file, check storage permissions: ");// e.getMessage());
+            Log.d(TAG, "Error creating media file, check storage permissions: ");
             return;
         }
         try {
@@ -116,16 +115,7 @@ public class SignUpTwoActivity extends AppCompatActivity {
 
 
     private File getOutputMediaFile() {
-        // To be safe, you should check that the SDCard is mounted
-        // using Environment.getExternalStorageState() before doing this.
-        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + getApplicationContext().getPackageName()
-                + "/Files");
-
-        // This location works best if you want the created images to be shared
-        // between applications and persist after your app has been uninstalled.
-
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + "/Android/data/" + getApplicationContext().getPackageName() + "/Files");
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {

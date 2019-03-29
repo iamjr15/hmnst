@@ -8,7 +8,7 @@
     tools:context=".activity.SignUpThreeActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSignUp"
         style="@style/Title"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,38 +16,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/verify_number_tv"
+        android:id="@+id/textViewVerifyNumber"
         style="@style/verifyTextView"
         android:text="@string/verify_contact_number"
-        app:layout_constraintBottom_toTopOf="@+id/phonenumber_et"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSignUp"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/phonenumber_et"
+        android:id="@+id/editTextPhone"
         style="@style/loginEditText"
         android:inputType="phone"
-        android:text="+918200098804"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/linear"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verify_number_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewVerifyNumber" />
 
     <RelativeLayout
-        android:id="@+id/linear"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_otp"
+        app:layout_constraintBottom_toTopOf="@+id/linearOTP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phonenumber_et">
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone">
 
         <Button
-            android:id="@+id/resend_code_btn"
+            android:id="@+id/buttonSendCode"
             style="@style/ResendButton"
             android:background="@drawable/rounded_border"
             android:text="@string/send_code"
@@ -58,7 +57,6 @@
             android:id="@+id/textView"
             style="@style/verifyTextView"
             android:layout_centerHorizontal="true"
-            android:text="0"
             android:visibility="gone" />
 
 
@@ -66,20 +64,20 @@
 
 
     <LinearLayout
-        android:id="@+id/layout_otp"
+        android:id="@+id/linearOTP"
         android:layout_width="match_parent"
         android:layout_height="60sp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/nextSignUp3_btn"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <com.mukesh.OtpView
-            android:id="@+id/otp_view"
+            android:id="@+id/viewOTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -94,7 +92,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/nextSignUp3_btn"
+        android:id="@+id/buttonSignUp"
         style="@style/nextButton"
         android:layout_marginBottom="64dp"
         android:background="@drawable/rounded_button"

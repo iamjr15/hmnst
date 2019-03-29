@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.avocode.AvaApplication;
@@ -34,30 +33,26 @@ import static com.example.avocode.utils.Util.checkEmptyStrings;
 //First sign up screen to take user's basic info
 public class SignUpActivity extends AppCompatActivity {
 
-    @BindView(R.id.phonenumber_et)
-    EditText phonenumber_et;
+    @BindView(R.id.editTextPhone)
+    EditText editTextPhone;
 
-    @BindView(R.id.passwordSignUp_et)
-    EditText passwordSignUp_et;
+    @BindView(R.id.editTextPassword)
+    EditText editTextPassword;
 
-    @BindView(R.id.firstname_et)
-    EditText firstname_et;
+    @BindView(R.id.editTextFirstName)
+    EditText editTextFirstName;
 
-    @BindView(R.id.lastname_et)
-    EditText lastname_et;
+    @BindView(R.id.editTextLastName)
+    EditText editTextLastName;
 
-    @BindView(R.id.dob_et)
-    TextView dob_et;
+    @BindView(R.id.editTextDOB)
+    TextView editTextDOB;
 
     @BindView(R.id.rbMale)
     RadioButton rbMale;
 
     @BindView(R.id.rbFemale)
     RadioButton rbFemale;
-
-    @BindView(R.id.gender_et)
-    RadioGroup genderEt;
-
 
     private Util util;
     final Calendar myCalendar = Calendar.getInstance();
@@ -84,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         };
 
-        dob_et.setOnClickListener(new View.OnClickListener() {
+        editTextDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(SignUpActivity.this, date, myCalendar
@@ -97,27 +92,27 @@ public class SignUpActivity extends AppCompatActivity {
     void updateText() {
         String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        dob_et.setText(sdf.format(myCalendar.getTime()));
+        editTextDOB.setText(sdf.format(myCalendar.getTime()));
     }
 
-    @OnClick(R.id.next_signup_button)
+    @OnClick(R.id.buttonSignUp)
     public void onNextClicked() {
-        if (checkEmptyStrings(firstname_et.getText().toString())) {
-            firstname_et.setError(getString(R.string.message_first_name_required));
-            firstname_et.requestFocus();
-        } else if (checkEmptyStrings(lastname_et.getText().toString())) {
-            lastname_et.setError(getString(R.string.message_last_name_required));
-            lastname_et.requestFocus();
-        } else if (checkEmptyStrings(passwordSignUp_et.getText().toString())) {
-            passwordSignUp_et.setError(getString(R.string.message_password_required));
-            passwordSignUp_et.requestFocus();
-        } else if (checkEmptyStrings(phonenumber_et.getText().toString())) {
-            phonenumber_et.setError(getString(R.string.message_phone_required));
-            phonenumber_et.requestFocus();
+        if (checkEmptyStrings(editTextFirstName.getText().toString())) {
+            editTextFirstName.setError(getString(R.string.message_first_name_required));
+            editTextFirstName.requestFocus();
+        } else if (checkEmptyStrings(editTextLastName.getText().toString())) {
+            editTextLastName.setError(getString(R.string.message_last_name_required));
+            editTextLastName.requestFocus();
+        } else if (checkEmptyStrings(editTextPassword.getText().toString())) {
+            editTextPassword.setError(getString(R.string.message_password_required));
+            editTextPassword.requestFocus();
+        } else if (checkEmptyStrings(editTextPhone.getText().toString())) {
+            editTextPhone.setError(getString(R.string.message_phone_required));
+            editTextPhone.requestFocus();
         } else {
             util.showLoading(getString(R.string.please_wait));
             FirebaseFirestore db = AvaApplication.getInstance().getDbInstance();
-            Task<DocumentSnapshot> docSnapshot = db.collection(Constants.USER_COLLECTION).document(phonenumber_et.getText().toString()).get();
+            Task<DocumentSnapshot> docSnapshot = db.collection(Constants.USER_COLLECTION).document(editTextPhone.getText().toString()).get();
             docSnapshot.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -150,12 +145,12 @@ public class SignUpActivity extends AppCompatActivity {
                 getString(R.string.female);
 
         Intent intent = new Intent(SignUpActivity.this, SignUpTwoActivity.class);
-        intent.putExtra("firstName", firstname_et.getText().toString().trim());
-        intent.putExtra("lastName", lastname_et.getText().toString().trim());
-        intent.putExtra("gender", gender);
-        intent.putExtra("dob", dob_et.getText().toString().trim());
-        intent.putExtra("password", passwordSignUp_et.getText().toString().trim());
-        intent.putExtra("phone", phonenumber_et.getText().toString().trim());
+        intent.putExtra(getString(R.string.firstName), editTextFirstName.getText().toString().trim());
+        intent.putExtra(getString(R.string.last_name), editTextLastName.getText().toString().trim());
+        intent.putExtra(getString(R.string.gender_label), gender);
+        intent.putExtra(getString(R.string.dob), editTextDOB.getText().toString().trim());
+        intent.putExtra(getString(R.string.password_label), editTextPassword.getText().toString().trim());
+        intent.putExtra(getString(R.string.phone_label), editTextPhone.getText().toString().trim());
         startActivity(intent);
     }
 

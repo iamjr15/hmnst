@@ -50,28 +50,24 @@ public class SignUpThreeActivity extends AppCompatActivity {
 
     private static final String TAG = SignUpThreeActivity.class.getSimpleName();
 
-    @BindView(R.id.phonenumber_et)
-    EditText phoneNumberET;
+    @BindView(R.id.editTextPhone)
+    EditText editTextPhone;
     @BindView(R.id.textView)
     TextView textView;
 
-    @BindView(R.id.resend_code_btn)
-    Button resend_code_btn;
+    @BindView(R.id.buttonSendCode)
+    Button buttonSendCode;
 
-    @BindView(R.id.nextSignUp3_btn)
-    Button nextSignUp3_btn;
+    @BindView(R.id.buttonSignUp)
+    Button buttonSignUp;
 
-    @BindView(R.id.layout_otp)
-    LinearLayout layout_otp;
+    @BindView(R.id.linearOTP)
+    LinearLayout linearOTP;
 
-    @BindView(R.id.otp_view)
-    OtpView otp_view;
+    @BindView(R.id.viewOTP)
+    OtpView viewOTP;
 
-    private boolean isOneTimeSend = false;
-
-    private String phone = null;
     private Util util;
-    private CountDownTimer timer;
     private static final String KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress";
     private static final int STATE_INITIALIZED = 1;
     private static final int STATE_CODE_SENT = 2;
@@ -86,7 +82,6 @@ public class SignUpThreeActivity extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    private FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,37 +93,18 @@ public class SignUpThreeActivity extends AppCompatActivity {
             onRestoreInstanceState(savedInstanceState);
         }
         util = new Util(this);
-        storage = FirebaseStorage.getInstance();
-        phone = getIntent().getStringExtra("phone");
+        String phone = getIntent().getStringExtra("phone");
         if (!checkEmptyStrings(phone)) {
-            phoneNumberET.setText(phone);
+            editTextPhone.setText(phone);
         }
-        // [START initialize_auth]
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
-
-        // Initialize phone auth callbacks
-        // [START phone_auth_callbacks]
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential credential) {
-                // This callback will be invoked in two situations:
-                // 1 - Instant verification. In some cases the phone number can be instantly
-                //     verified without needing to send or enter a verification code.
-                // 2 - Auto-retrieval. On some devices Google Play services can automatically
-                //     detect the incoming verification SMS and perform verification without
-                //     user action.
                 Log.d(TAG, "onVerificationCompleted:" + credential);
-                // [START_EXCLUDE silent]
                 mVerificationInProgress = false;
-                // [END_EXCLUDE]
-
-                // [START_EXCLUDE silent]
-                // Update the UI and attempt sign in with the phone credential
                 updateUI(STATE_VERIFY_SUCCESS, credential);
-                // [END_EXCLUDE]
                 signInWithPhoneAuthCredential(credential);
             }
 
@@ -137,60 +113,36 @@ public class SignUpThreeActivity extends AppCompatActivity {
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e);
-                // [START_EXCLUDE silent]
                 mVerificationInProgress = false;
-                // [END_EXCLUDE]
-
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-                    // [START_EXCLUDE]
-                    phoneNumberET.setError("Invalid phone number.");
-                    // [END_EXCLUDE]
+                    editTextPhone.setError("Invalid phone number.");
                 } else if (e instanceof FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
-                    // [START_EXCLUDE]
-                    Snackbar.make(findViewById(android.R.id.content), "Quota exceeded.",
-                            Snackbar.LENGTH_SHORT).show();
-                    // [END_EXCLUDE]
+                    Snackbar.make(findViewById(android.R.id.content), "Quota exceeded.", Snackbar.LENGTH_SHORT).show();
                 }
-
-                // Show a message and update the UI
-                // [START_EXCLUDE]
                 updateUI(STATE_VERIFY_FAILED);
-                // [END_EXCLUDE]
             }
 
             @Override
-            public void onCodeSent(String verificationId,
-                                   PhoneAuthProvider.ForceResendingToken token) {
-                // The SMS verification code has been sent to the provided phone number, we
-                // now need to ask the user to enter the code and then construct a credential
-                // by combining the code with a verification ID.
+            public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
                 Log.d(TAG, "onCodeSent:" + verificationId);
                 startTimer();
                 // Save verification ID and resending token so we can use them later
                 mVerificationId = verificationId;
                 mResendToken = token;
-
-                // [START_EXCLUDE]
-                // Update UI
                 updateUI(STATE_CODE_SENT);
-                // [END_EXCLUDE]
             }
         };
-        // [END phone_auth_callbacks]
     }
 
-    @OnClick(R.id.nextSignUp3_btn)
+    @OnClick(R.id.buttonSignUp)
     public void onSignUpClicked() {
-
         if (!validatePhoneNumber()) {
             return;
         }
-        if (otp_view.getText() == null || checkEmptyStrings(otp_view.getText().toString().trim())) {
+        if (viewOTP.getText() == null || checkEmptyStrings(viewOTP.getText().toString().trim())) {
             util.toast(getString(R.string.message_add_otp));
         } else {
-            String code = otp_view.getText().toString();
+            String code = viewOTP.getText().toString();
             if (TextUtils.isEmpty(code)) {
                 util.toast("OTP Cannot be empty.");
                 return;
@@ -202,53 +154,45 @@ public class SignUpThreeActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.resend_code_btn)
+    @OnClick(R.id.buttonSendCode)
     public void onResendClicked() {
         if (mVerificationId == null) {
             if (!validatePhoneNumber()) {
                 return;
             }
-            startPhoneNumberVerification(phoneNumberET.getText().toString());
+            startPhoneNumberVerification(editTextPhone.getText().toString());
         } else {
-            resendVerificationCode(phoneNumberET.getText().toString(), mResendToken);
+            resendVerificationCode(editTextPhone.getText().toString(), mResendToken);
         }
     }
 
     private void startTimer() {
-        timer = new CountDownTimer(60000, 1000) {
+        CountDownTimer timer = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(final long millSecondsLeftToFinish) {
                 String time = String.valueOf(millSecondsLeftToFinish / 1000);
                 textView.setText(getString(R.string.resend_code_text, time));
                 textView.setVisibility(View.VISIBLE);
-                resend_code_btn.setVisibility(View.GONE);
+                buttonSendCode.setVisibility(View.GONE);
             }
 
             @Override
             public void onFinish() {
                 textView.setVisibility(View.GONE);
-                resend_code_btn.setVisibility(View.VISIBLE);
-                resend_code_btn.setText(getString(R.string.resend_code));
+                buttonSendCode.setVisibility(View.VISIBLE);
+                buttonSendCode.setText(getString(R.string.resend_code));
             }
         };
         timer.start();
     }
 
-    // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-
-        // [START_EXCLUDE]
-//        if (mVerificationInProgress && validatePhoneNumber()) {
-//            startPhoneNumberVerification(phoneNumberET.getText().toString());
-//        }
-        // [END_EXCLUDE]
     }
-    // [END on_start_check_user]
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -263,39 +207,33 @@ public class SignUpThreeActivity extends AppCompatActivity {
     }
 
     private void startPhoneNumberVerification(String phoneNumber) {
-        // [START start_phone_auth]
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
-        // [END start_phone_auth]
 
         mVerificationInProgress = true;
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
-        // [START verify_with_code]
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        // [END verify_with_code]
         signInWithPhoneAuthCredential(credential);
     }
 
-    // [START resend_verification]
     private void resendVerificationCode(String phoneNumber,
                                         PhoneAuthProvider.ForceResendingToken token) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks,         // OnVerificationStateChangedCallbacks
-                token);             // ForceResendingToken from callbacks
+                phoneNumber,
+                60,
+                TimeUnit.SECONDS,
+                this,
+                mCallbacks,
+                token);
     }
-    // [END resend_verification]
 
-    // [START sign_in_with_phone]
+
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -304,34 +242,19 @@ public class SignUpThreeActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-
                             FirebaseUser user = task.getResult().getUser();
-                            // [START_EXCLUDE]
                             updateUI(STATE_SIGNIN_SUCCESS, user);
-                            // [END_EXCLUDE]
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
-                                // [START_EXCLUDE silent]
                                 util.toast("Invalid code.");
-                                otp_view.setText("");
-                                // [END_EXCLUDE]
+                                viewOTP.setText("");
                             }
-                            // [START_EXCLUDE silent]
-                            // Update UI
                             updateUI(STATE_SIGNIN_FAILED);
-                            // [END_EXCLUDE]
                         }
                     }
                 });
-    }
-    // [END sign_in_with_phone]
-
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(STATE_INITIALIZED);
     }
 
     private void updateUI(int uiState) {
@@ -358,29 +281,29 @@ public class SignUpThreeActivity extends AppCompatActivity {
         switch (uiState) {
             case STATE_INITIALIZED:
                 // Initialized state, show only the phone number field and start button
-                resend_code_btn.setText(getString(R.string.send_code));
-                enableViews(resend_code_btn);
-                disableViews(textView, layout_otp);
+                buttonSendCode.setText(getString(R.string.send_code));
+                enableViews(buttonSendCode);
+                disableViews(textView, linearOTP);
                 break;
             case STATE_CODE_SENT:
                 // Code sent state, show the verification field, the
-                enableViews(layout_otp);
+                enableViews(linearOTP);
                 disableViews(textView);
                 break;
             case STATE_VERIFY_FAILED:
                 // Verification has failed, show all options
-                resend_code_btn.setText(getString(R.string.resend_code));
-                enableViews(resend_code_btn, layout_otp);
+                buttonSendCode.setText(getString(R.string.resend_code));
+                enableViews(buttonSendCode, linearOTP);
                 util.toast(getString(R.string.message_verification_failed));
                 break;
             case STATE_VERIFY_SUCCESS:
                 // Verification has succeeded, proceed to firebase sign in
-                disableViews(layout_otp, resend_code_btn, phoneNumberET, nextSignUp3_btn);
+                disableViews(linearOTP, buttonSendCode, editTextPhone, buttonSignUp);
                 // Set the verification text based on the credential
                 if (cred != null) {
                     Log.d("cred", "cred");
                     if (cred.getSmsCode() != null) {
-                        otp_view.setText(cred.getSmsCode());
+                        viewOTP.setText(cred.getSmsCode());
                     }
                 }
 
@@ -388,7 +311,6 @@ public class SignUpThreeActivity extends AppCompatActivity {
             case STATE_SIGNIN_FAILED:
                 Log.d("STATE_SIGNIN_FAILED", "STATE_SIGNIN_FAILED");
                 // No-op, handled by sign-in check
-                //mDetailText.setText(R.string.status_sign_in_failed);
                 break;
             case STATE_SIGNIN_SUCCESS:
                 Log.d("STATE_SIGNIN_FAILED", "STATE_SIGNIN_FAILED");
@@ -402,9 +324,9 @@ public class SignUpThreeActivity extends AppCompatActivity {
     }
 
     private boolean validatePhoneNumber() {
-        String phoneNumber = phoneNumberET.getText().toString();
+        String phoneNumber = editTextPhone.getText().toString();
         if (TextUtils.isEmpty(phoneNumber)) {
-            phoneNumberET.setError(getString(R.string.invalid_phone));
+            editTextPhone.setError(getString(R.string.invalid_phone));
             return false;
         }
 
@@ -437,17 +359,16 @@ public class SignUpThreeActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             //if the upload is successful
-                            //hiding the progress dialog
                             riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     //Handle whatever you're going to do with the URL here
-                                    String firstName = getIntent().getStringExtra("firstName");
-                                    String lastName = getIntent().getStringExtra("lastName");
-                                    String gender = getIntent().getStringExtra("gender");
-                                    String dob = getIntent().getStringExtra("dob");
-                                    String password = getIntent().getStringExtra("password");
+                                    String firstName = getIntent().getStringExtra(getString(R.string.firstName));
+                                    String lastName = getIntent().getStringExtra(getString(R.string.last_name));
+                                    String gender = getIntent().getStringExtra(getString(R.string.gender_label));
+                                    String dob = getIntent().getStringExtra(getString(R.string.dob));
+                                    String password = getIntent().getStringExtra(getString(R.string.password_label));
                                     String uriPath = uri.toString();
                                     UserImpl userImplementation = new UserImpl(SignUpThreeActivity.this);
                                     FirestoreUserModel firestoreUserModel = new FirestoreUserModel();
@@ -462,27 +383,21 @@ public class SignUpThreeActivity extends AppCompatActivity {
                                     userImplementation.doesUserExist(phoneNumber, firestoreUserModel);
                                 }
                             });
-                            //and displaying a success toast
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             //if the upload is not successful
-                            //hiding the progress dialog
                             util.hideLoading();
-
-                            //and displaying error message
                             util.toast(exception.getMessage());
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            //calculating progress percentage
                             double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                             util.log("Progress", "" + progress);
-                            //displaying percentage in progress dialog
 
                         }
                     });

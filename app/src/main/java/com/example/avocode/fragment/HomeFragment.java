@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private Util util;
     private GoogleMap googleMap;
     private MapView mapView;
-    @BindView(R.id.bottom_sheet)
+    @BindView(R.id.bottomSheet)
     RelativeLayout layoutBottomSheet;
     @BindView(R.id.imageViewUpDown)
     ImageView imageViewUpDown;
@@ -90,10 +90,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         mapView.getMapAsync(this);
         util = new Util(getActivity());
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
-        /**
-         * bottom sheet state change listener
-         * we are changing button text when sheet changed state
-         * */
+        /*
+          bottom sheet state change listener
+          we are changing button text when sheet changed state
+          */
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -249,11 +249,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                             if (task.isSuccessful() && task.getResult() != null) {
                                 mLocation = task.getResult();
                                 onNewLocation(mLocation);
-                            } else {
                             }
                         }
                     });
-        } catch (SecurityException unlikely) {
+        } catch (SecurityException ignore) {
         }
     }
 

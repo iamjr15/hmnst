@@ -19,7 +19,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        app:layout_anchor="@+id/bottom_sheet"
+        app:layout_anchor="@+id/bottomSheet"
         app:layout_anchorGravity="top|end">
 
         <com.balysv.materialripple.MaterialRippleLayout

@@ -6,22 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.avocode.R;
@@ -36,7 +31,6 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.lang.reflect.Method;
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -49,7 +43,6 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 public class Util {
     private ProgressDialog progressDialog;
     private Context context;
-    private static final String KEY_REQUESTING_LOCATION_UPDATES = "requesting_location_updates";
 
     public Util(Context context) {
         this.context = context;
@@ -81,34 +74,8 @@ public class Util {
         Log.println(Log.ASSERT, "" + title, "" + msg);
     }
 
-    public boolean isConnectingToInternet() {
-        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (i < 2) {
-                        if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                            return true;
-                        }
-                    }
-        }
-        return false;
-    }
-
     public static boolean checkEmptyStrings(String string) {
         return TextUtils.isEmpty(string);
-    }
-
-    public void showSnackBar(Activity activity, String message) {
-        View view = activity.findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar
-                .make(view, message, Snackbar.LENGTH_LONG);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimary));
-        TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
     }
 
     public boolean isMobileDataEnabled() {
@@ -140,15 +107,6 @@ public class Util {
             return Objects.requireNonNull(manager).isProviderEnabled(LocationManager.GPS_PROVIDER);
         } catch (Exception e) {
             return false;
-        }
-    }
-
-    public double roundTwoDecimals(double d) {
-        try {
-            DecimalFormat twoDForm = new DecimalFormat("#.##");
-            return Double.valueOf(twoDForm.format(d));
-        } catch (Exception e) {
-            return d;
         }
     }
 

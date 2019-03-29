@@ -8,7 +8,7 @@
     tools:context=".activity.LoginActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewLogin"
         style="@style/Title"
         android:text="@string/login"
         android:textAllCaps="true"
@@ -17,48 +17,48 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/phone_number_tv"
+        android:id="@+id/textViewPhone"
         style="@style/loginTextView"
         android:text="@string/phone_number"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogin" />
 
     <EditText
-        android:id="@+id/phone_et"
+        android:id="@+id/editTextPhone"
         style="@style/loginEditText"
         android:hint="+91"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_number_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
 
     <TextView
-        android:id="@+id/password_tv"
+        android:id="@+id/textViewPassword"
         style="@style/loginTextView"
         android:text="@string/password"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone_et" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
 
     <EditText
-        android:id="@+id/password_et"
+        android:id="@+id/editTextPassword"
         style="@style/loginEditText"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
 
     <Button
-        android:id="@+id/next_btn"
+        android:id="@+id/buttonNext"
         style="@style/nextButton"
         android:background="@drawable/rounded_button"
         android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_et" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
 
 </android.support.constraint.ConstraintLayout>

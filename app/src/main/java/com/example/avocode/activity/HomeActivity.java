@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,7 +23,6 @@ import com.balysv.materialripple.MaterialRippleLayout;
 import com.bumptech.glide.Glide;
 import com.example.avocode.R;
 import com.example.avocode.fragment.HomeFragment;
-import com.example.avocode.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
 import com.orm.SchemaGenerator;
 import com.orm.SugarContext;
@@ -41,9 +39,7 @@ import static com.example.avocode.utils.Util.checkEmptyStrings;
 //HomeActivity to show map on screen and navigation to another screens
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = HomeActivity.class.getSimpleName();
     public int currentFragment = 0;
-    private Util util;
     private Bundle bundle = new Bundle();
     @BindView(R.id.imageViewUser)
     ImageView imageViewUser;
@@ -51,8 +47,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer_layout;
     @BindView(R.id.textViewCity)
     TextView textViewCity;
-    private String currentCity;
-    private String[] capitals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +55,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setSelectedFragment(FRAGMENT_HOME, bundle);
         ButterKnife.bind(this);
         imageViewUser.setImageResource(R.drawable.ic_user);
-        capitals = getResources().getStringArray(R.array.capitals);
-        currentCity = capitals[0];
         initDrawer();
     }
 
@@ -101,16 +93,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             finish();
         } else {
             super.onBackPressed();
-//            if (getCurrentFragment().equalsIgnoreCase(HomeFragment.class.getName())) {
-//                initList();
-//            }
         }
-    }
-
-    //FETCH PREVIOUS FRAGMENT FROM BACKSTACK
-    private String getCurrentFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
     }
 
     // Initialize Drawer and load data
@@ -141,8 +124,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     new AlertDialog.Builder(HomeActivity.this)
                             .setTitle(getString(R.string.attention))
                             .setMessage(getString(R.string.message_sign_out))
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // Continue with sign out operation
@@ -217,14 +198,4 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         builderSingle.show();
     }
 
-//    private ArrayList createCapitalList() {
-//        ArrayList<DropdownListItem> dropdownListItems = new ArrayList<>();
-//
-//        if (capitals.length > 0) {
-//            for (int i = 0; i < capitals.length; i++) {
-//                dropdownListItems.add(new DropdownListItem(i, capitals[i]));
-//            }
-//        }
-//        return dropdownListItems;
-//    }
 }

@@ -2,7 +2,7 @@ package com.example.avocode.models;
 //Model class to store Firestore data
 public class FirestoreUserModel {
 
-    String firstName, lastName, gender, dob, phone, uriPath, password;
+    private String firstName, lastName, gender, dob, phone, uriPath, password;
 
     public FirestoreUserModel() {
     }

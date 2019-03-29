@@ -14,7 +14,7 @@
         tools:context=".SignUpActivity">
 
         <TextView
-            android:id="@+id/signup_tv"
+            android:id="@+id/textViewSignUp"
             style="@style/Title"
             android:layout_marginTop="16dp"
             android:text="@string/signup"
@@ -23,131 +23,116 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/name_tv"
+            android:id="@+id/textViewName"
             style="@style/loginTextView"
             android:text="@string/introduce_yourself"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
 
         <EditText
-            android:id="@+id/firstname_et"
+            android:id="@+id/editTextFirstName"
             style="@style/loginEditText"
             android:hint="@string/first_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
         <EditText
-            android:id="@+id/lastname_et"
+            android:id="@+id/editTextLastName"
             style="@style/loginEditText"
             android:hint="@string/last_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstname_et" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
 
         <TextView
-            android:id="@+id/dob_tv"
+            android:id="@+id/textViewDOB"
             style="@style/loginTextView"
             android:text="@string/date_of_birth"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastname_et" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextLastName" />
 
-        <!--<EditText-->
-        <!--android:id="@+id/dob_et"-->
-        <!--style="@style/loginEditText"-->
-        <!--android:hint="@string/select_date_of_birth"-->
-        <!--android:inputType="date"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/dob_tv" />-->
         <TextView
-            android:id="@+id/dob_et"
+            android:id="@+id/editTextDOB"
             style="@style/loginEditText"
             android:hint="@string/select_date_of_birth"
             android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dob_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewDOB" />
 
         <TextView
-            android:id="@+id/gender_tv"
+            android:id="@+id/textViewGender"
             style="@style/loginTextView"
             android:text="@string/gender"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dob_et" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextDOB" />
 
-        <!--<EditText-->
-        <!--android:id="@+id/gender_et"-->
-        <!--style="@style/loginEditText"-->
-        <!--android:hint="@string/select_your_gender"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/gender_tv" />-->
 
         <RadioGroup
-            android:id="@+id/gender_et"
+            android:id="@+id/editTextGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender_tv">
+            app:layout_constraintTop_toBottomOf="@+id/textViewGender">
 
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
                 android:checked="true"
-                android:text="@string/male"
-                android:buttonTint="@color/black"/>
+                android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="@string/female"
-                android:buttonTint="@color/black"/>
+                android:layout_marginStart="20dp"
+                android:buttonTint="@color/black"
+                android:text="@string/female" />
 
         </RadioGroup>
 
         <TextView
-            android:id="@+id/password_tv"
+            android:id="@+id/textViewPassword"
             style="@style/loginTextView"
             android:text="@string/password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender_et" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
 
         <EditText
-            android:id="@+id/passwordSignUp_et"
+            android:id="@+id/editTextPassword"
             style="@style/loginEditText"
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
 
         <TextView
-            android:id="@+id/phonenumber_tv"
+            android:id="@+id/textViewPhone"
             style="@style/loginTextView"
             android:text="@string/phone_number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordSignUp_et" />
+            app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
         <EditText
-            android:id="@+id/phonenumber_et"
+            android:id="@+id/editTextPhone"
             style="@style/loginEditText"
             android:hint="+91"
             android:inputType="phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phonenumber_tv" />
+            app:layout_constraintTop_toBottomOf="@id/textViewPhone" />
 
         <Button
-            android:id="@+id/next_signup_button"
+            android:id="@+id/buttonSignUp"
             style="@style/nextButton"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
@@ -157,7 +142,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phonenumber_et" />
+            app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -88,13 +88,13 @@ public class UserImpl implements IUserRepository {
                 Log.d(TAG, "User was successfully added");
                 util.saveUser(firestoreUserModel.getFirstName(), firestoreUserModel.getLastName(), firestoreUserModel.getGender(), firestoreUserModel.getDob(), firestoreUserModel.getPhone(), firestoreUserModel.getUriPath());
                 Intent intent = new Intent(activity, HomeActivity.class);
-                intent.putExtra("firstName", firestoreUserModel.getFirstName());
-                intent.putExtra("lastName", firestoreUserModel.getLastName());
-                intent.putExtra("gender", firestoreUserModel.getGender());
-                intent.putExtra("dob", firestoreUserModel.getDob());
-                intent.putExtra("password", firestoreUserModel.getPassword());
-                intent.putExtra("phone", firestoreUserModel.getPhone());
-                intent.putExtra("uriPath", firestoreUserModel.getUriPath());
+                intent.putExtra(activity.getString(R.string.firstName), firestoreUserModel.getFirstName());
+                intent.putExtra(activity.getString(R.string.lastName), firestoreUserModel.getLastName());
+                intent.putExtra(activity.getString(R.string.gender_label), firestoreUserModel.getGender());
+                intent.putExtra(activity.getString(R.string.dob), firestoreUserModel.getDob());
+                intent.putExtra(activity.getString(R.string.password_label), firestoreUserModel.getPassword());
+                intent.putExtra(activity.getString(R.string.phone_label), firestoreUserModel.getPhone());
+                intent.putExtra(activity.getString(R.string.uriPath), firestoreUserModel.getUriPath());
                 // set the new task and clear flags
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 activity.startActivity(intent);
@@ -126,13 +126,13 @@ public class UserImpl implements IUserRepository {
                     if (firestoreUserModel != null) {
                         util.saveUser(firestoreUserModel.getFirstName(), firestoreUserModel.getLastName(), firestoreUserModel.getGender(), firestoreUserModel.getDob(), firestoreUserModel.getPhone(), firestoreUserModel.getUriPath());
                         Intent intent = new Intent(activity, HomeActivity.class);
-                        intent.putExtra("firstName", firestoreUserModel.getFirstName());
-                        intent.putExtra("lastName", firestoreUserModel.getLastName());
-                        intent.putExtra("gender", firestoreUserModel.getGender());
-                        intent.putExtra("dob", firestoreUserModel.getDob());
-                        intent.putExtra("password", firestoreUserModel.getPassword());
-                        intent.putExtra("phone", firestoreUserModel.getPhone());
-                        intent.putExtra("uriPath", firestoreUserModel.getUriPath());
+                        intent.putExtra(activity.getString(R.string.firstName), firestoreUserModel.getFirstName());
+                        intent.putExtra(activity.getString(R.string.last_name), firestoreUserModel.getLastName());
+                        intent.putExtra(activity.getString(R.string.gender_label), firestoreUserModel.getGender());
+                        intent.putExtra(activity.getString(R.string.dob), firestoreUserModel.getDob());
+                        intent.putExtra(activity.getString(R.string.password_label), firestoreUserModel.getPassword());
+                        intent.putExtra(activity.getString(R.string.phone_label), firestoreUserModel.getPhone());
+                        intent.putExtra(activity.getString(R.string.uriPath), firestoreUserModel.getUriPath());
                         // set the new task and clear flags
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         util.hideLoading();

@@ -31,7 +31,7 @@
     <string name="message_password_required">Password required!!</string>
     <string name="message_first_name_required">First name required</string>
     <string name="message_last_name_required">Last name required</string>
-    <string name="messae_provide_image">provide a real photo of you, so that responders can recognise you in case of emergency</string>
+    <string name="message_provide_image">provide a real photo of you, so that responders can recognise you in case of emergency</string>
     <string name="message_add_picture">Please add your picture first</string>
     <string name="verify_contact_number">VERIFY CONTACT NUMBER</string>
     <string name="_91">+91</string>
@@ -57,4 +57,11 @@
     <string name="message_sign_out">Are you sure want to sign out from the app?</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="firstName">firstName</string>
+    <string name="lastName">lastName</string>
+    <string name="gender_label">gender</string>
+    <string name="dob">dob</string>
+    <string name="password_label">password</string>
+    <string name="phone_label">phone</string>
+    <string name="uriPath">uriPath</string>
 </resources>
