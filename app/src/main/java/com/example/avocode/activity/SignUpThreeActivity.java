@@ -138,6 +138,7 @@ public class SignUpThreeActivity extends AppCompatActivity {
                 updateUI(STATE_CODE_SENT);
             }
         };
+        viewOTP.requestFocus();
         startPhoneNumberVerification(editTextPhone.getText().toString());
     }
 

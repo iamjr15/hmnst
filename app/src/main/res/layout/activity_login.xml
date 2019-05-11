@@ -83,7 +83,7 @@
 
     <Button
         android:id="@+id/buttonNext"
-        style="@style/nextButton"
+        style="@style/blackButton"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/mr"
         android:text="@string/next"

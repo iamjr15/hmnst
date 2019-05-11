@@ -11,16 +11,20 @@
         android:id="@+id/textViewSignUp"
         style="@style/Title"
         android:fontFamily="@font/mr"
-        android:text="@string/sign_up"
+        android:text="@string/signup"
+        android:textSize="29sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewVerifyNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/textViewVerifyNumber"
         style="@style/verifyTextView"
         android:fontFamily="@font/mr"
         android:text="@string/verify_contact_number"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +37,10 @@
         android:enabled="false"
         android:fontFamily="@font/ml"
         android:inputType="phone"
+        android:textSize="29sp"
         android:textAlignment="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +49,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearOTP"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,19 +95,19 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:inputType="number"
-            android:itemBackground="@drawable/rounded_border"
+            android:itemBackground="@drawable/circle_border"
             android:textColor="@color/black"
             app:itemCount="6"
             app:lineColor="@color/black"
-            app:viewType="line" />
+            app:viewType="none">
+            <requestFocus/>
+        </com.mukesh.OtpView>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonSignUp"
         style="@style/nextButton"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/rounded_button"
         android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
