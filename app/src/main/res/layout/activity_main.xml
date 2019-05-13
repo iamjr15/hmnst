@@ -14,14 +14,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="78dp"
-            android:background="@color/colorSignUp"
-            android:fontFamily="@font/mr"
-            android:text="@string/sign_up"
-            android:textSize="29sp" />
+            style="@style/SignUpButton" />
     </com.balysv.materialripple.MaterialRippleLayout>
 
     <com.balysv.materialripple.MaterialRippleLayout
-        android:id="@+id/buttonSignIn"
+        android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonSignUp">
@@ -29,9 +26,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="78dp"
-            android:background="@color/colorSignIn"
-            android:fontFamily="@font/mr"
-            android:text="@string/login"
-            android:textSize="29sp" />
+            style="@style/LoginButton"/>
     </com.balysv.materialripple.MaterialRippleLayout>
 </RelativeLayout>

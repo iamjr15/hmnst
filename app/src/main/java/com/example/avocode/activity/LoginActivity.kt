@@ -3,6 +3,7 @@ package com.example.avocode.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.widget.ArrayAdapter
 import com.example.avocode.R
 import com.example.avocode.repo.UserImpl
 import kotlinx.android.synthetic.main.activity_login.*
@@ -13,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        phonePrefix.adapter = ArrayAdapter<String>(this, R.layout.phone_prefix_spinner_item, resources.getStringArray(R.array.phonePrefixes))
         buttonNext.setOnClickListener {
             when {
                 TextUtils.isEmpty(editTextPhone!!.text.toString()) -> {

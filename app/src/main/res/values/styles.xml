@@ -24,25 +24,35 @@
     <style name="LoginSignUpButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">@font/mr</item>
+        <item name="android:fontFamily">@font/mb</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="SignUpButton" parent="LoginSignUpButton">
-        <item name="android:background">@android:color/holo_red_light</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:fontFamily">@font/mr</item>
+        <item name="android:background">@color/colorSignUp</item>
+        <item name="android:text">@string/signup</item>
     </style>
 
     <style name="LoginButton" parent="LoginSignUpButton">
-        <item name="android:background">#FFF0</item>
-        <item name="android:fontFamily">@font/mr</item>
+        <item name="android:background">@color/colorLogin</item>
+        <item name="android:text">@string/login</item>
+    </style>
+
+    <style name="phonePrefixSpinner" parent="loginActivity">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:fontFamily">@font/mb</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="loginActivity">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/mr</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:fontFamily">@font/mb</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -53,19 +63,16 @@
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:padding">4dp</item>
-        <item name="android:fontFamily">@font/mr</item>
+        <item name="android:fontFamily">@font/mb</item>
     </style>
 
     <style name="loginEditText" parent="loginActivity">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_margin">8dp</item>
         <item name="android:ems">10</item>
-        <item name="android:fontFamily">@font/ml</item>
+        <item name="android:fontFamily">@font/mb</item>
     </style>
 
     <style name="blackButton" parent="loginActivity">
