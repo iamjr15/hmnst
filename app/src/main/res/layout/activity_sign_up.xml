@@ -4,20 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:scrollbars="vertical"
         tools:context=".SignUpActivity">
 
         <TextView
             android:id="@+id/textViewSignUp"
             style="@style/Title"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/mr"
             android:text="@string/signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +22,6 @@
         <TextView
             android:id="@+id/textViewName"
             style="@style/loginTextView"
-            android:fontFamily="@font/mr"
             android:text="@string/introduce_yourself"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
@@ -34,17 +29,17 @@
         <EditText
             android:id="@+id/editTextFirstName"
             style="@style/loginEditText"
-            android:fontFamily="@font/ml"
             android:hint="@string/first_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewName">
+            <requestFocus/>
+        </EditText>
 
         <EditText
             android:id="@+id/editTextLastName"
             style="@style/loginEditText"
-            android:fontFamily="@font/ml"
             android:hint="@string/last_name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +49,6 @@
         <TextView
             android:id="@+id/textViewDOB"
             style="@style/loginTextView"
-            android:fontFamily="@font/mr"
             android:text="@string/date_of_birth"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextLastName" />
@@ -62,9 +56,7 @@
         <TextView
             android:id="@+id/editTextDOB"
             style="@style/loginEditText"
-            android:fontFamily="@font/mr"
             android:hint="@string/select_date_of_birth"
-            android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDOB" />
@@ -72,11 +64,9 @@
         <TextView
             android:id="@+id/textViewGender"
             style="@style/loginTextView"
-            android:fontFamily="@font/mr"
             android:text="@string/gender"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDOB" />
-
 
         <RadioGroup
             android:id="@+id/editTextGender"
@@ -109,7 +99,6 @@
         <TextView
             android:id="@+id/textViewPassword"
             style="@style/loginTextView"
-            android:fontFamily="@font/mr"
             android:text="@string/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
@@ -117,7 +106,6 @@
         <EditText
             android:id="@+id/editTextPassword"
             style="@style/loginEditText"
-            android:fontFamily="@font/ml"
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,55 +115,19 @@
         <TextView
             android:id="@+id/textViewPhone"
             style="@style/loginTextView"
-            android:fontFamily="@font/mr"
             android:text="@string/phone_number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
-
-        <FrameLayout
-            android:id="@+id/flPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewPhone">
-
-            <TextView
-                style="@style/loginActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="0dp"
-                android:ems="10"
-                android:fontFamily="@font/mr"
-                android:paddingStart="4dp"
-                android:paddingEnd="0dp"
-                android:text="+91" />
-
-            <EditText
-                android:id="@+id/editTextPhone"
-                style="@style/loginEditText"
-                android:fontFamily="@font/ml"
-                android:inputType="phone"
-                android:paddingStart="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewPhone" />
-
-
-        </FrameLayout>
+        <include android:id="@+id/flPhone"
+            layout="@layout/include_phone_input"/>
 
         <Button
             android:id="@+id/buttonSignUp"
             style="@style/blackButton"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_button"
             android:text="@string/next"
-            android:textColor="@color/white"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintWidth_percent="0.7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

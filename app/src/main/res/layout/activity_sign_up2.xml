@@ -9,12 +9,7 @@
     <TextView
         android:id="@+id/textViewSignUp"
         style="@style/Title"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/mr"
         android:text="@string/signup"
-        android:textAllCaps="true"
-        android:textSize="29sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +29,7 @@
         android:id="@+id/textViewMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/mr"
+        android:fontFamily="@font/mb"
         android:gravity="center"
         android:text="@string/message_provide_image"
         android:textColor="@android:color/black"

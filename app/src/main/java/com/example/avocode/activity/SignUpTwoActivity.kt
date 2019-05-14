@@ -117,6 +117,6 @@ class SignUpTwoActivity : AppCompatActivity() {
 
     companion object {
 
-        private val TAG = SignUpThreeActivity::class.java!!.getSimpleName()
+        private val TAG = SignUpThreeActivity::class.java.simpleName
     }
 }

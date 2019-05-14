@@ -17,7 +17,6 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_login.editTextPhone
 import kotlinx.android.synthetic.main.activity_sign_up3.*
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -45,10 +44,10 @@ class SignUpThreeActivity : AppCompatActivity() {
         util!!.showLoading(getString(R.string.please_wait))
         val phone = intent.getStringExtra("phone")
         if (!checkEmptyStrings(phone)) {
-            editTextPhone!!.setText("+91 $phone")
-            buttonSendCode!!.visibility = View.GONE
+            editTextPhone.setText(phone)
+            buttonSendCode.visibility = View.GONE
         } else {
-            buttonSendCode!!.visibility = View.VISIBLE
+            buttonSendCode.visibility = View.VISIBLE
         }
         mAuth = FirebaseAuth.getInstance()
         mCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -67,7 +66,7 @@ class SignUpThreeActivity : AppCompatActivity() {
                 Log.w(TAG, "onVerificationFailed", e)
                 mVerificationInProgress = false
                 if (e is FirebaseAuthInvalidCredentialsException) {
-                    editTextPhone!!.error = "Invalid phone number."
+                    editTextPhone.error = "Invalid phone number."
                 } else if (e is FirebaseTooManyRequestsException) {
                     Snackbar.make(findViewById(android.R.id.content), "Quota exceeded.", Snackbar.LENGTH_SHORT).show()
                 }
@@ -84,14 +83,14 @@ class SignUpThreeActivity : AppCompatActivity() {
                 updateUI(STATE_CODE_SENT)
             }
         }
-        viewOTP!!.requestFocus()
-        startPhoneNumberVerification(editTextPhone!!.text.toString())
+        viewOTP.requestFocus()
+        startPhoneNumberVerification(editTextPhone.text.toString())
 
         buttonSignUp.setOnClickListener signUpClick@{
             if (!validatePhoneNumber()) {
                 return@signUpClick
             }
-            if (viewOTP!!.text == null || checkEmptyStrings(viewOTP!!.text!!.toString().trim { it <= ' ' })) {
+            if (viewOTP.text == null || checkEmptyStrings(viewOTP.text!!.toString().trim { it <= ' ' })) {
                 util!!.toast(getString(R.string.message_add_otp))
             } else {
                 val code = viewOTP!!.text!!.toString()
