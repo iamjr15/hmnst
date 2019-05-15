@@ -20,7 +20,10 @@ import com.example.avocode.config.Constants.FRAGMENT_HOME
 import com.example.avocode.utils.Util
 import com.example.avocode.utils.Util.Companion.displayLocationSettingsRequest
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
@@ -41,7 +44,6 @@ import java.util.*
 class HomeFragment : Fragment(), OnMapReadyCallback {
     private var util: Util? = null
     private var googleMap: GoogleMap? = null
-    private var mapView: MapView? = null
     private var sheetBehavior: BottomSheetBehavior<*>? = null
     private var mLocationRequest: LocationRequest? = null
     private var mFusedLocationClient: FusedLocationProviderClient? = null
@@ -52,15 +54,18 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         (activity as HomeActivity).currentFragment = FRAGMENT_HOME
-        mapView = view.findViewById(R.id.mapView)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         try {
-            mapView!!.onCreate(savedInstanceState)
-            mapView!!.onResume()
+            mapView.onCreate(savedInstanceState)
+            mapView.onResume()
             MapsInitializer.initialize(activity!!.applicationContext)
         } catch (ignore: Exception) {
         }
 
-        mapView!!.getMapAsync(this)
+        mapView.getMapAsync(this)
         util = Util(activity as Activity)
         sheetBehavior = BottomSheetBehavior.from(bottomSheet)
         /*
@@ -104,12 +109,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             getLocation()
         }
         util!!.showLoading(getString(R.string.please_wait))
-        return view
     }
 
     override fun onResume() {
         try {
-            mapView!!.onResume()
+            mapView.onResume()
         } catch (ignore: Exception) {
         }
 
@@ -119,7 +123,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     override fun onPause() {
         super.onPause()
         try {
-            mapView!!.onPause()
+            mapView.onPause()
         } catch (ignore: Exception) {
         }
 
