@@ -4,7 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer">Drawer</string>
-    <string name="google_key">AIzaSyCPng2_q4AhMDXeHtwOSJyjDc_fUQ9E1ts</string>
+    <string name="google_key">AIzaSyBV1Lpmb7cs4ymo54k1uPvl5TtNHSm9K54</string>
+    <!-- Real old key: AIzaSyCPng2_q4AhMDXeHtwOSJyjDc_fUQ9E1ts-->
     <string name="signup">SIGNUP</string>
     <string name="login">Login</string>
     <string name="location_permission">Location permission</string>
