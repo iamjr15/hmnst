@@ -16,6 +16,7 @@ object PhoneUtils {
 
     private const val PHONE_PREFS = "PhonePrefs"
     private const val PHONE_PREFIX = "PhonePrefix"
+    private const val PHONE_NUMBER = "PhoneNumber"
 
     fun setupPhonePrefixesSpinner(spinner: Spinner) {
         val ctx = spinner.context
@@ -31,6 +32,21 @@ object PhoneUtils {
             }
         }
         spinner.setSelection(phonePrefixes.indexOf(getLastPhonePrefix(ctx) ?: "+" + getCountryZipCode(ctx)))
+    }
+
+    fun setupPhoneNumber(phoneNumber: EditText) {
+        val ctx = phoneNumber.context
+        phoneNumber.setText(getLastPhoneNumber(ctx))
+    }
+
+    fun setLastPhoneNumber(context: Context, phoneNumber: String) {
+        val editor = context.getSharedPreferences(PHONE_PREFS, MODE_PRIVATE).edit()
+        editor.putString(PHONE_NUMBER, phoneNumber).apply()
+    }
+
+    fun getLastPhoneNumber(context: Context): String? {
+        val prefs = context.getSharedPreferences(PHONE_PREFS, MODE_PRIVATE)
+        return prefs.getString(PHONE_NUMBER, null)
     }
 
     fun setLastPhonePrefix(context: Context, phonePrefix: String) {

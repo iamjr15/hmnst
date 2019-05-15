@@ -12,10 +12,8 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import com.balysv.materialripple.MaterialRippleLayout
 import com.bumptech.glide.Glide
@@ -101,14 +99,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val view = navigationView.getHeaderView(0)
 
         //Get  user's profile
-        val user = findById<User>(User::class.java, 1)
+        val user = findById(User::class.java, 1)
         if (user != null) {
             if (!checkEmptyStrings(user.uriPath)) {
-                Glide.with(this).load(user.uriPath).into(view.findViewById<View>(R.id.imageView) as ImageView)
+                Glide.with(this).load(user.uriPath).into(imageViewUser)
             }
             val textViewFullName = view.findViewById<TextView>(R.id.textViewFullName)
             val textViewNumber = view.findViewById<TextView>(R.id.textViewNumber)
-            textViewFullName.setText(String.format("%s %s", user.firstName, user.lastName))
+            textViewFullName.text = String.format("%s %s", user.firstName, user.lastName)
             textViewNumber.text = user.phone
             val materialSignOut = view.findViewById<MaterialRippleLayout>(R.id.materialSignOut)
             materialSignOut.setOnClickListener {

@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         PhoneUtils.setupPhonePrefixesSpinner(phonePrefix)
+        PhoneUtils.setupPhoneNumber(editTextPhone)
         editTextPhone.requestFocus()
         buttonNext.setOnClickListener {
             when {
@@ -28,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
                     editTextPassword.requestFocus()
                 }
                 else -> {
+                    PhoneUtils.setLastPhoneNumber(this@LoginActivity, editTextPhone.text.toString())
                     val userImplementation = UserImpl(this@LoginActivity)
                     userImplementation.getLoginUserByPhone("${phonePrefix.selectedItem}${editTextPhone.text.toString().trim { it <= ' ' } }",
                             editTextPassword.text.toString().trim { it <= ' ' })

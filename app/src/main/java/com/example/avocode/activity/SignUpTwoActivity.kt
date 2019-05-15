@@ -87,7 +87,7 @@ class SignUpTwoActivity : AppCompatActivity() {
 
                     if (bitmap != null) {
                         storeImage(bitmap)
-                        Glide.with(this).load(resultUri).into(imageView!!)
+                        Glide.with(this).load(resultUri).into(imageView)
                     }
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {

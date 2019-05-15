@@ -70,7 +70,7 @@ class Util(private val context: Context) {
 
     //Check whether user is logged in or not
     val isUseerLoggedIn: Boolean
-        get() = findById<User>(User::class.java, 1) != null
+        get() = findById(User::class.java, 1) != null
 
     fun showLoading(msg: String) {
         try {
@@ -120,7 +120,7 @@ class Util(private val context: Context) {
     }
 
     fun saveUser(firstName: String, lastName: String, gender: String, dob: String, phone: String, uriPath: String) {
-        val user = findById<User>(User::class.java, 1)
+        val user = findById(User::class.java, 1)
         if (user != null) {
             user.firstName = firstName
             user.lastName = lastName
