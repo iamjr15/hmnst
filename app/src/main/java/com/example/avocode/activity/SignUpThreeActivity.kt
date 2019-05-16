@@ -300,6 +300,7 @@ class SignUpThreeActivity : AppCompatActivity() {
                             firestoreUserModel.password = password
                             firestoreUserModel.phone = phoneNumber
                             firestoreUserModel.uriPath = uriPath
+                            firestoreUserModel.familyCode = Util.generateFamilyCode()
                             util!!.hideLoading()
                             userImplementation.doesUserExist(phoneNumber!!, firestoreUserModel)
                         }

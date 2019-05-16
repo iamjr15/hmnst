@@ -57,6 +57,7 @@ class UserImpl(private val activity: Activity) : IUserRepository {
         user[Constants.DocumentFields.GENDER] = firestoreUserModel.gender!!
         user[Constants.DocumentFields.PHONE] = firestoreUserModel.phone!!
         user[Constants.DocumentFields.URI_PATH] = firestoreUserModel.uriPath!!
+        user[Constants.DocumentFields.FAMILY_CODE] = firestoreUserModel.familyCode!!
         val newUser = db!!.collection(Constants.USER_COLLECTION).document(firestoreUserModel.phone!!).set(user)
         newUser.addOnSuccessListener {
             Log.d(TAG, "User was successfully added")
@@ -65,7 +66,8 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                     firestoreUserModel.gender!!,
                     firestoreUserModel.dob!!,
                     firestoreUserModel.phone!!,
-                    firestoreUserModel.uriPath!!)
+                    firestoreUserModel.uriPath!!,
+                    firestoreUserModel.familyCode!!)
             val intent = Intent(activity, HomeActivity::class.java)
             intent.putExtra(activity.getString(R.string.firstName), firestoreUserModel.firstName)
             intent.putExtra(activity.getString(R.string.lastName), firestoreUserModel.lastName)
@@ -74,6 +76,7 @@ class UserImpl(private val activity: Activity) : IUserRepository {
             intent.putExtra(activity.getString(R.string.password_label), firestoreUserModel.password)
             intent.putExtra(activity.getString(R.string.phone_label), firestoreUserModel.phone)
             intent.putExtra(activity.getString(R.string.uriPath), firestoreUserModel.uriPath)
+            intent.putExtra(activity.getString(R.string.familyCode), firestoreUserModel.familyCode)
             util.hideLoading()
             // set the new task and clear flags
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -103,7 +106,8 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                                     firestoreUserModel.gender!!,
                                     firestoreUserModel.dob!!,
                                     firestoreUserModel.phone!!,
-                                    firestoreUserModel.uriPath!!)
+                                    firestoreUserModel.uriPath!!,
+                                    firestoreUserModel.familyCode!!)
                             val intent = Intent(activity, HomeActivity::class.java)
                             intent.putExtra(activity.getString(R.string.firstName), firestoreUserModel.firstName)
                             intent.putExtra(activity.getString(R.string.last_name), firestoreUserModel.lastName)
@@ -112,6 +116,7 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                             intent.putExtra(activity.getString(R.string.password_label), firestoreUserModel.password)
                             intent.putExtra(activity.getString(R.string.phone_label), firestoreUserModel.phone)
                             intent.putExtra(activity.getString(R.string.uriPath), firestoreUserModel.uriPath)
+                            intent.putExtra(activity.getString(R.string.familyCode), firestoreUserModel.familyCode)
                             // set the new task and clear flags
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             util.hideLoading()

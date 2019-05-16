@@ -7,11 +7,10 @@
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/ln1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_header_height"
-        android:background="@color/colorHeader"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -20,25 +19,23 @@
         android:paddingBottom="@dimen/activity_vertical_margin">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgAvatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_user" />
 
         <TextView
             android:id="@+id/textViewFullName"
+            style="@style/loginTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/mr"
             android:gravity="center"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:text="Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/textViewNumber"
@@ -47,9 +44,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/mr"
             android:text="1234567890"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 
@@ -59,37 +54,63 @@
         android:orientation="vertical">
 
         <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/materialSignOut"
+            android:id="@+id/btnProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/size_16"
-            android:paddingTop="@dimen/size_12"
-            android:paddingEnd="@dimen/size_16"
-            android:paddingBottom="@dimen/size_12">
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/loginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/profile" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/btnFamily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/loginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/family" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/btnSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/tvPremium"
+                android:background="@drawable/rect_border"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    app:srcCompat="@drawable/ic_sign_out" />
-
                 <TextView
+                    style="@style/loginEditText"
+                    android:background="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/size_16"
-                    android:fontFamily="@font/mr"
-                    android:text="@string/sign_out"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:text="@string/sign_out" />
+
+                <!--ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_sign_out" /-->
 
             </LinearLayout>
+
         </com.balysv.materialripple.MaterialRippleLayout>
 
     </LinearLayout>

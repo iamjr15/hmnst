@@ -64,9 +64,11 @@
     <string name="password_label">password</string>
     <string name="phone_label">phone</string>
     <string name="uriPath">uriPath</string>
+    <string name="familyCode">familyCode</string>
     <string name="invalid_code">Invalid code.</string>
     <string name="family">FAMILY</string>
-    <string name="family_code">FAMILY CODE : 234AB</string>
+    <string name="family_code">FAMILY CODE : %s</string>
     <string name="add_to_family">ADD TO FAMILY</string>
     <string name="family_description">The members in this list receive emergency updates when you\'re vulnerable or in danger, and they get to see your location when you choose to share it.</string>
+    <string name="profile">PROFILE</string>
 </resources>

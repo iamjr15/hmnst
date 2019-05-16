@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.balysv.materialripple.MaterialRippleLayout
 import com.bumptech.glide.Glide
@@ -102,14 +103,24 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val user = findById(User::class.java, 1)
         if (user != null) {
             if (!checkEmptyStrings(user.uriPath)) {
-                Glide.with(this).load(user.uriPath).into(imageViewUser)
+                val avatar = Glide.with(this).load(user.uriPath)
+                avatar.into(view.findViewById(R.id.imgAvatar) as ImageView)
+                avatar.into(imageViewUser)
             }
             val textViewFullName = view.findViewById<TextView>(R.id.textViewFullName)
             val textViewNumber = view.findViewById<TextView>(R.id.textViewNumber)
             textViewFullName.text = String.format("%s %s", user.firstName, user.lastName)
             textViewNumber.text = user.phone
-            val materialSignOut = view.findViewById<MaterialRippleLayout>(R.id.materialSignOut)
-            materialSignOut.setOnClickListener {
+            val btnFamily = view.findViewById<MaterialRippleLayout>(R.id.btnFamily)
+            btnFamily.setOnClickListener {
+                closeDrawer()
+
+                val intent = Intent(this@HomeActivity, FamilyActivity::class.java)
+                intent.putExtra(getString(R.string.familyCode), user.familyCode)
+                startActivity(intent)
+            }
+            val btnSignOut = view.findViewById<MaterialRippleLayout>(R.id.btnSignOut)
+            btnSignOut.setOnClickListener {
                 closeDrawer()
 
                 val alertDialog = AlertDialog.Builder(this@HomeActivity)

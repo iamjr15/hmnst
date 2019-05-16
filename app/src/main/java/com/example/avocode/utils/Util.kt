@@ -119,7 +119,7 @@ class Util(private val context: Context) {
         activity.startActivityForResult(intent, 101)
     }
 
-    fun saveUser(firstName: String, lastName: String, gender: String, dob: String, phone: String, uriPath: String) {
+    fun saveUser(firstName: String, lastName: String, gender: String, dob: String, phone: String, uriPath: String, familyCode: String) {
         val user = findById(User::class.java, 1)
         if (user != null) {
             user.firstName = firstName
@@ -128,9 +128,10 @@ class Util(private val context: Context) {
             user.dob = dob
             user.phone = phone
             user.uriPath = uriPath
+            user.familyCode = familyCode
             user.save()
         } else {
-            val user1 = User(firstName, lastName, gender, dob, phone, uriPath)
+            val user1 = User(firstName, lastName, gender, dob, phone, uriPath, familyCode)
             user1.save()
         }
     }
@@ -157,6 +158,15 @@ class Util(private val context: Context) {
     }
 
     companion object {
+
+        private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
+        fun generateFamilyCode(): String {
+            return (1..5)
+                    .map { kotlin.random.Random.nextInt(0, charPool.size) }
+                    .map(charPool::get)
+                    .joinToString("")
+        }
 
         fun checkEmptyStrings(string: String?): Boolean {
             return TextUtils.isEmpty(string)

@@ -8,4 +8,5 @@ class FirestoreUserModel(
     var dob: String? = null,
     var phone: String? = null,
     var uriPath: String? = null,
-    var password: String? = null)
+    var password: String? = null,
+    var familyCode: String? = null)

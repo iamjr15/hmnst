@@ -7,4 +7,5 @@ class User(var firstName: String = "",
            var gender: String = "",
            var dob: String = "",
            var phone: String = "",
-           var uriPath: String = ""): SugarRecord()
+           var uriPath: String = "",
+           var familyCode: String = ""): SugarRecord()

@@ -65,7 +65,7 @@ class SignUpTwoActivity : AppCompatActivity() {
                 util!!.toast(getString(R.string.message_add_picture))
             }
         }
-        imageView.setOnClickListener {
+        imgAvatar.setOnClickListener {
             // start picker to get image for cropping and then use the image in cropping activity
             CropImage.activity().setRequestedSize(500, 500, CropImageView.RequestSizeOptions.RESIZE_INSIDE).start(this)
         }
@@ -87,7 +87,7 @@ class SignUpTwoActivity : AppCompatActivity() {
 
                     if (bitmap != null) {
                         storeImage(bitmap)
-                        Glide.with(this).load(resultUri).into(imageView)
+                        Glide.with(this).load(resultUri).into(imgAvatar)
                     }
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
