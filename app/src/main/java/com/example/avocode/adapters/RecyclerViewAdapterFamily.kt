@@ -20,7 +20,7 @@ class RecyclerViewAdapterFamily(val familyList: ArrayList<FamilyData>) : Recycle
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
 
         p0.name?.text = familyList[p1].fullName
-        p0.count? = familyList[p1].familyImage
+        p0.count?.setImageResource(familyList[p1].familyImage)
     }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.textview_family_name_id)
