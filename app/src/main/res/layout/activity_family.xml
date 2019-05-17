@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewFamily" />
 
     <TextView
-        android:id="@+id/textViewAddToFamily"
+        android:id="@+id/btnAddToFamily"
         android:layout_width="0dp"
         android:layout_height="52dp"
         style="@style/addToFamily"
@@ -42,18 +42,19 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="44dp"
-        android:drawableLeft="@drawable/ic_plus"
-        android:paddingLeft="12dp"
+        android:drawableStart="@drawable/ic_plus"
+        android:paddingStart="12dp"
         android:singleLine="true"
         android:text="@string/add_to_family"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFamilyCode" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFamilyCode"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewDescription"
         android:layout_width="0dp"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="22dp"
@@ -63,19 +64,21 @@
         android:text="@string/family_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddToFamily" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddToFamily" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvFamilyGrid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
 </android.support.constraint.ConstraintLayout>
