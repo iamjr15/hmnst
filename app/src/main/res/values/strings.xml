@@ -25,8 +25,11 @@
     <string name="select_your_gender">SELECT YOUR GENDER</string>
     <string name="password">PASSWORD</string>
     <string name="enter_password">ENTER PASSWORD</string>
+    <string name="family_code">FAMILY CODE</string>
+    <string name="enter_family_code">ENTER FAMILY CODE</string>
     <string name="phone_number">PHONE NUMBER</string>
     <string name="next">NEXT</string>
+    <string name="message_family_code_not_fit">Family code should be 5 alphanumeric characters string</string>
     <string name="message_phone_required">Phone number required!!</string>
     <string name="message_password_required">Password required!!</string>
     <string name="message_first_name_required">First name required</string>
@@ -47,6 +50,8 @@
     <string name="apk_folder_name">com.example.avocode</string>
     <string name="message_user_registration_failed">User registration failed. Please Try again later</string>
     <string name="message_user_already_exist">User already exist</string>
+    <string name="message_updating_family_id">Family Code updating…</string>
+    <string name="message_updating_family_id_failed">Family Code update failed. Please Try again later</string>
     <string name="message_logging">Logging you in…</string>
     <string name="message_credential_invalid">Phone number or Password is wrong</string>
     <string name="please_wait">Please wait…</string>
@@ -67,9 +72,13 @@
     <string name="familyCode">familyCode</string>
     <string name="invalid_code">Invalid code.</string>
     <string name="family">FAMILY</string>
-    <string name="family_code">FAMILY CODE : %s</string>
+    <string name="family_code_with_value">FAMILY CODE : %s</string>
     <string name="add_to_family">ADD TO FAMILY</string>
     <string name="family_description">The members in this list receive emergency updates when you\'re vulnerable or in danger, and they get to see your location when you choose to share it.</string>
     <string name="profile">PROFILE</string>
-    <string name="enter_family_code">ENTER THE FAMILY CODE OF THE PERSON YOU WANT TO ADD</string>
+    <string name="enter_family_code_description">ENTER THE FAMILY CODE OF THE PERSON YOU WANT TO ADD</string>
+    <string name="go">GO</string>
+    <string name="or">OR</string>
+    <string name="share_family_code_description">SHARE YOUR FAMILY CODE WITH YOUR ACQUAINTANCES, AND BE SAFER</string>
+    <string name="share_code">SHARE CODE</string>
 </resources>

@@ -27,7 +27,7 @@
         style="@style/familyCodeTitle"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="@string/family_code"
+        android:text="@string/family_code_with_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFamily" />

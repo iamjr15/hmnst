@@ -132,6 +132,30 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                 }
     }
 
+    override fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: (s: Boolean) -> Unit) {
+        util.showLoading(activity.getString(R.string.message_updating_family_id))
+        db!!.collection(Constants.USER_COLLECTION).document(firestoreUserModel.phone!!)
+                .update(Constants.DocumentFields.FAMILY_CODE, firestoreUserModel.familyCode!!)
+                .addOnSuccessListener {
+                    Log.d(TAG, "User family Id was successfully updated")
+                    util.saveUser(firestoreUserModel.firstName!!,
+                            firestoreUserModel.lastName!!,
+                            firestoreUserModel.gender!!,
+                            firestoreUserModel.dob!!,
+                            firestoreUserModel.phone!!,
+                            firestoreUserModel.uriPath!!,
+                            firestoreUserModel.familyCode!!)
+                    util.hideLoading()
+                    resultListener.invoke(true)
+                }
+                .addOnFailureListener { e ->
+                    util.hideLoading()
+                    Log.d(TAG, "Error has occured " + e.message)
+                    util.toast(activity.getString(R.string.message_updating_family_id_failed))
+                    resultListener.invoke(false)
+                }
+    }
+
     companion object {
         private val TAG = UserImpl::class.java.simpleName
     }

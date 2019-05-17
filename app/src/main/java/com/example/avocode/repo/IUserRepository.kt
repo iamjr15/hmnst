@@ -8,4 +8,6 @@ interface IUserRepository {
     fun addNewRegisteredUser(firestoreUserModel: FirestoreUserModel)
 
     fun getLoginUserByPhone(phone: String, password: String)
+
+    fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: (success: Boolean) -> Unit)
 }

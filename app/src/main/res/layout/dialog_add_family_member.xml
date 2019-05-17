@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_dialog"
     android:layout_gravity="top"
     android:layout_marginTop="100dp"
@@ -25,32 +26,83 @@
         style="@style/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_family_code"
+        android:fontFamily="@font/mr"
+        android:text="@string/enter_family_code_description"
         android:textSize="16sp"
         android:paddingStart="21dp"
         android:paddingEnd="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintBottom_toTopOf="@+id/tvPassword"/>
+        app:layout_constraintBottom_toTopOf="@+id/tvFamilyCodeTitle"/>
 
     <TextView
-        android:id="@+id/tvPassword"
+        android:id="@+id/tvFamilyCodeTitle"
         style="@style/loginTextView"
         android:fontFamily="@font/mb"
-        android:text="@string/password"
+        android:text="@string/family_code"
         android:textAllCaps="true"
+        android:textAlignment="viewStart"
+        android:layout_width="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/subTitle"
+        app:layout_constraintBottom_toTopOf="@+id/editTextFamilyCode"/>
 
     <EditText
-        android:id="@+id/editTextPassword"
-        style="@style/loginEditText"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
+        android:id="@+id/editTextFamilyCode"
+        style="@style/shareCodeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFamilyCodeTitle"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGo"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/buttonGo"
+        style="@style/goButton"
+        android:text="@string/go"
+        android:layout_marginTop="19dp"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFamilyCode"
+        app:layout_constraintBottom_toTopOf="@+id/titleOr"/>
+
+    <TextView
+        android:id="@+id/titleOr"
+        style="@style/loginTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/or"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGo"
+        app:layout_constraintBottom_toTopOf="@+id/tvShareDescription"/>
+
+    <TextView
+        android:id="@+id/tvShareDescription"
+        style="@style/loginTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_family_code_description"
+        android:textSize="15sp"
+        android:paddingStart="21dp"
+        android:paddingEnd="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleOr"
+        app:layout_constraintBottom_toTopOf="@+id/buttonShare"/>
+
+    <Button
+        android:id="@+id/buttonShare"
+        style="@style/shareButton"
+        android:text="@string/share_code"
+        app:layout_constraintTop_toBottomOf="@+id/tvShareDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
