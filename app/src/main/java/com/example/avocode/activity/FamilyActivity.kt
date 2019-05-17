@@ -14,6 +14,7 @@ import com.example.avocode.adapters.RecyclerViewAdapterFamily
 import com.example.avocode.models.FamilyMemberData
 import com.example.avocode.models.FirestoreUserModel
 import com.example.avocode.repo.UserImpl
+import com.example.avocode.utils.Util
 import com.orm.SugarRecord
 import dbmodel.User
 import kotlinx.android.synthetic.main.activity_family.*
@@ -27,7 +28,7 @@ class FamilyActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family)
         val oldFamilyCode = intent.getStringExtra(getString(R.string.familyCode))
-        updateFamilyCode(oldFamilyCode)
+        Util.showFamilyCode(textViewFamilyCode, oldFamilyCode)
 
         btnAddToFamily.setOnClickListener {
             val dialog = Dialog(this@FamilyActivity)
@@ -66,7 +67,7 @@ class FamilyActivity: AppCompatActivity() {
                             }
                             UserImpl(this@FamilyActivity).updateUserFamilyId(userModel) { success ->
                                 if(success) {
-                                    updateFamilyCode(newFamilyCode)
+                                    Util.showFamilyCode(textViewFamilyCode, newFamilyCode)
                                     //familyList.add()
                                 }
                             }
@@ -87,27 +88,23 @@ class FamilyActivity: AppCompatActivity() {
             dialog .show()
         }
 
-        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
+//        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
 
         rvFamilyGrid.apply {
             val gridLayoutManager = GridLayoutManager(context, 3)
             layoutManager = gridLayoutManager
             adapter = RecyclerViewAdapterFamily(familyList)
         }
-    }
-
-    fun updateFamilyCode(newFamilyCode: String) {
-        textViewFamilyCode.text = String.format(getString(R.string.family_code_with_value), newFamilyCode)
     }
 }

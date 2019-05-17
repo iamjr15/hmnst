@@ -15,6 +15,7 @@ import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.text.TextUtils
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import com.example.avocode.R
 import com.google.android.gms.common.api.GoogleApiClient
@@ -207,6 +208,10 @@ class Util(private val context: Context) {
                     LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> Log.i("LocationDialog", "Location settings are inadequate, and cannot be fixed here. Dialog not created.")
                 }
             }
+        }
+
+        fun showFamilyCode(tv: TextView, newFamilyCode: String) {
+             tv.text = String.format(tv.context.getString(R.string.family_code_with_value), newFamilyCode)
         }
     }
 }

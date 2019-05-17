@@ -16,7 +16,8 @@ class ProfileActivity: AppCompatActivity() {
 
         val user = findById(User::class.java, 1)
         if (user != null) {
-            textViewFullName.text = "${user.firstName} ${user.lastName}"
+            Util.showFamilyCode(textViewFamilyCode, user.familyCode)
+            textViewFullName.text = String.format(getString(R.string.fullName), user.firstName, user.lastName)
             editTextDOB.text = user.dob
             editTextFirstName.setText(user.firstName)
             editTextLastName.setText(user.lastName)
@@ -26,8 +27,6 @@ class ProfileActivity: AppCompatActivity() {
             }
             editTextGender.text = user.gender
             flPhone.setText(user.phone)
-
         }
-
     }
 }

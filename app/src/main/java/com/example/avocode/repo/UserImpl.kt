@@ -132,6 +132,7 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                 }
     }
 
+    // Update user family Code
     override fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: (s: Boolean) -> Unit) {
         util.showLoading(activity.getString(R.string.message_updating_family_id))
         db!!.collection(Constants.USER_COLLECTION).document(firestoreUserModel.phone!!)
