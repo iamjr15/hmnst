@@ -1,6 +1,10 @@
 package com.example.avocode.repo
 
+import com.example.avocode.models.FamilyMemberData
 import com.example.avocode.models.FirestoreUserModel
+import com.google.firebase.firestore.GeoPoint
+
+typealias ResultListener = ((s: Boolean) -> Unit)?
 
 interface IUserRepository {
     fun doesUserExist(phone: String, firestoreUserModel: FirestoreUserModel)
@@ -9,5 +13,9 @@ interface IUserRepository {
 
     fun getLoginUserByPhone(phone: String, password: String)
 
-    fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: (success: Boolean) -> Unit)
+    fun getFamilyMembers(familyId: String, familyMembersListener: (familyMembers: Array<FamilyMemberData>) -> Unit)
+
+    fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: ResultListener = null)
+
+    fun updateUserGeoLocation(phone: String, newLocation: GeoPoint, resultListener: ResultListener = null)
 }

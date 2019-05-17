@@ -7,14 +7,15 @@ import com.example.avocode.AvaApplication
 import com.example.avocode.R
 import com.example.avocode.activity.HomeActivity
 import com.example.avocode.config.Constants
+import com.example.avocode.models.FamilyMemberData
 import com.example.avocode.models.FirestoreUserModel
 import com.example.avocode.utils.Util
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
 import java.util.*
 
 //helper class for login and registration purpose
 class UserImpl(private val activity: Activity) : IUserRepository {
-
     private val db: FirebaseFirestore?
 
     private val app: AvaApplication = AvaApplication.instance
@@ -132,8 +133,12 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                 }
     }
 
+    override fun getFamilyMembers(familyId: String, familyMembersListener: (familyMembers: Array<FamilyMemberData>) -> Unit) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     // Update user family Code
-    override fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: (s: Boolean) -> Unit) {
+    override fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: ResultListener) {
         util.showLoading(activity.getString(R.string.message_updating_family_id))
         db!!.collection(Constants.USER_COLLECTION).document(firestoreUserModel.phone!!)
                 .update(Constants.DocumentFields.FAMILY_CODE, firestoreUserModel.familyCode!!)
@@ -147,13 +152,25 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                             firestoreUserModel.uriPath!!,
                             firestoreUserModel.familyCode!!)
                     util.hideLoading()
-                    resultListener.invoke(true)
+                    resultListener?.invoke(true)
                 }
                 .addOnFailureListener { e ->
                     util.hideLoading()
                     Log.d(TAG, "Error has occured " + e.message)
                     util.toast(activity.getString(R.string.message_updating_family_id_failed))
-                    resultListener.invoke(false)
+                    resultListener?.invoke(false)
+                }
+    }
+
+    override fun updateUserGeoLocation(phone: String, newLocation: GeoPoint, resultListener: ResultListener) {
+        db!!.collection(Constants.USER_COLLECTION).document(phone)
+                .update(Constants.DocumentFields.GEO_LOCATION, newLocation)
+                .addOnSuccessListener {
+                    resultListener?.invoke(true)
+                }
+                .addOnFailureListener { e ->
+                    Log.d(TAG, "Error has occured " + e.message)
+                    resultListener?.invoke(false)
                 }
     }
 

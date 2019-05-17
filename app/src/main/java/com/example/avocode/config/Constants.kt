@@ -20,5 +20,6 @@ object Constants {
         const val URI_PATH = "uriPath"
         const val PASSWORD = "password"
         const val FAMILY_CODE = "familyCode"
+        const val GEO_LOCATION = "geoLocation"
     }
 }

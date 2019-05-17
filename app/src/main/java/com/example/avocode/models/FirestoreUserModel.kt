@@ -1,5 +1,7 @@
 package com.example.avocode.models
 
+import com.google.firebase.firestore.GeoPoint
+
 //Model class to store Firestore data
 class FirestoreUserModel(
     var firstName: String? = null,
@@ -9,4 +11,5 @@ class FirestoreUserModel(
     var phone: String? = null,
     var uriPath: String? = null,
     var password: String? = null,
-    var familyCode: String? = null)
+    var familyCode: String? = null,
+    var geoPosition: GeoPoint? = null)
