@@ -56,6 +56,9 @@
             android:name=".activity.FamilyActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".activity.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

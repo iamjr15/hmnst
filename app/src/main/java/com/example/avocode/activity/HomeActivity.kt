@@ -111,6 +111,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val textViewNumber = view.findViewById<TextView>(R.id.textViewNumber)
             textViewFullName.text = String.format("%s %s", user.firstName, user.lastName)
             textViewNumber.text = user.phone
+            val btnProfile = view.findViewById<MaterialRippleLayout>(R.id.btnProfile)
+            btnProfile.setOnClickListener {
+                closeDrawer()
+
+                val intent = Intent(this@HomeActivity, ProfileActivity::class.java)
+                startActivity(intent)
+            }
             val btnFamily = view.findViewById<MaterialRippleLayout>(R.id.btnFamily)
             btnFamily.setOnClickListener {
                 closeDrawer()

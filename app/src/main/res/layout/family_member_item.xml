@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:id="@+id/gridBackgroundView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp" android:layout_marginEnd="5dp" android:layout_marginStart="5dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageview_family_image_id"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_photo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_family_name_id"
+        style="@style/familyMemberName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingTop="11dp"
+        android:text="Richard Clark"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_family_image_id"
+        app:layout_constraintStart_toStartOf="@+id/imageview_family_image_id"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_family_image_id" />
+
+</android.support.constraint.ConstraintLayout>
+
+<!--LinearLayout android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -24,4 +67,4 @@
         android:gravity="center"
         style="@style/familyMemberName" />
 
-</LinearLayout>
+</LinearLayout-->
