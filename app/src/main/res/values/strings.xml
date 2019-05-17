@@ -62,6 +62,7 @@
     <string name="message_sign_out">Are you sure want to sign out from the app?</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="name">Name</string>
     <string name="firstName">firstName</string>
     <string name="lastName">lastName</string>
     <string name="gender_label">gender</string>

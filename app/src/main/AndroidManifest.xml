@@ -31,6 +31,10 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
 
         </activity>
+
+        <activity android:name=".activity.FamilyActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".activity.SignUpTwoActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -50,6 +54,9 @@
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
         <activity
             android:name=".activity.FamilyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.SplashActivity"
