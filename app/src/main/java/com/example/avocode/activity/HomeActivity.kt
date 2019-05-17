@@ -163,6 +163,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        startActivity(Intent(this, FamilyActivity::class.java))
         return false
     }
 

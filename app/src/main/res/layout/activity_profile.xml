@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        tools:context=".SignUpActivity">
+
+        <ImageView
+            android:id="@+id/imageViewProfilePic"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.4"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/circle_border"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewFullName"
+            style="@style/familyMemberName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="11dp"
+            android:text="Richard Clark"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewProfilePic"
+            app:layout_constraintStart_toStartOf="@+id/imageViewProfilePic"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePic" />
+
+        <TextView
+            android:id="@+id/textViewFamilyCode"
+            style="@style/familyCodeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/ic_green_bg"
+            android:gravity="center"
+            android:text="@string/family_code"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFullName" />
+
+
+        <TextView
+            android:id="@+id/textViewName"
+            style="@style/loginTextView"
+            android:text="@string/firstName"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFamilyCode" />
+
+        <EditText
+            android:id="@+id/editTextFirstName"
+            style="@style/loginEditText"
+            android:focusable="false"
+            android:clickable="false"
+            android:hint="@string/first_name"
+            android:inputType="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName">
+            <requestFocus/>
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextLastName"
+            style="@style/loginEditText"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/last_name"
+            android:inputType="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
+
+        <TextView
+            android:id="@+id/textViewDOB"
+            style="@style/loginTextView"
+            android:text="@string/date_of_birth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLastName" />
+
+        <TextView
+            android:id="@+id/editTextDOB"
+            style="@style/loginEditText"
+            android:clickable="false"
+            android:hint="@string/select_date_of_birth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDOB" />
+
+        <TextView
+            android:id="@+id/textViewGender"
+            style="@style/loginTextView"
+            android:text="@string/gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDOB" />
+
+        <TextView
+            android:id="@+id/editTextGender"
+            style="@style/loginEditText"
+            android:clickable="false"
+            android:hint="@string/select_date_of_birth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+
+        <TextView
+            android:id="@+id/textViewPhone"
+            style="@style/loginTextView"
+            android:text="@string/phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
+
+        <EditText
+            android:id="@+id/flPhone"
+            style="@style/loginEditText"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/phone_number"
+            android:inputType="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
