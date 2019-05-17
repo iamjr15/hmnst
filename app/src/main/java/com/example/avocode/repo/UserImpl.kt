@@ -7,7 +7,7 @@ import com.example.avocode.AvaApplication
 import com.example.avocode.R
 import com.example.avocode.activity.HomeActivity
 import com.example.avocode.config.Constants
-import com.example.avocode.models.FamilyMemberData
+import com.example.avocode.models.FamilyMemberModel
 import com.example.avocode.models.FirestoreUserModel
 import com.example.avocode.utils.Util
 import com.google.firebase.firestore.FirebaseFirestore
@@ -133,8 +133,20 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                 }
     }
 
-    override fun getFamilyMembers(familyId: String, familyMembersListener: (familyMembers: Array<FamilyMemberData>) -> Unit) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getFamilyMembers(familyCode: String, familyMembersListener: (familyMembers: List<FamilyMemberModel>) -> Unit) {
+        db!!.collection(Constants.USER_COLLECTION)
+                .whereEqualTo(Constants.DocumentFields.FAMILY_CODE, familyCode)
+                .addSnapshotListener { queryDocumentSnapshots, e ->
+                    Log.d("onEvent", "onEvent")
+                    if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty) {
+                        val familyMembers = mutableListOf<FamilyMemberModel>()
+                        for (snapshot in queryDocumentSnapshots) {
+                            val familyMemberModel = snapshot.toObject<FamilyMemberModel>(FamilyMemberModel::class.java)
+                            familyMembers.add(familyMemberModel)
+                        }
+                        familyMembersListener.invoke(familyMembers)
+                    } else familyMembersListener.invoke(emptyList())
+                }
     }
 
     // Update user family Code

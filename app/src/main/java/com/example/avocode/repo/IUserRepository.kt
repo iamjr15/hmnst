@@ -1,6 +1,6 @@
 package com.example.avocode.repo
 
-import com.example.avocode.models.FamilyMemberData
+import com.example.avocode.models.FamilyMemberModel
 import com.example.avocode.models.FirestoreUserModel
 import com.google.firebase.firestore.GeoPoint
 
@@ -13,7 +13,7 @@ interface IUserRepository {
 
     fun getLoginUserByPhone(phone: String, password: String)
 
-    fun getFamilyMembers(familyId: String, familyMembersListener: (familyMembers: Array<FamilyMemberData>) -> Unit)
+    fun getFamilyMembers(familyCode: String, familyMembersListener: (familyMembers: List<FamilyMemberModel>) -> Unit)
 
     fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: ResultListener = null)
 
