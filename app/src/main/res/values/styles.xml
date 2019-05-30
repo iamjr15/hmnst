@@ -99,11 +99,31 @@
         <item name="layout_constraintWidth_percent">0.5</item>
     </style>
 
+    <style name="shareLocation">
+        <item name="android:background">@drawable/rounded_button</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/mb</item>
+        <item name="android:paddingLeft">17dp</item>
+        <item name="android:paddingRight">15dp</item>
+    </style>
+
+    <style name="report_a_crime">
+        <item name="android:textColor">#ff0a0909</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/mb</item>
+        <item name="android:paddingLeft">17dp</item>
+        <item name="android:paddingRight">15dp</item>
+    </style>
+
     <style name="blackButton" parent="loginActivity">
         <item name="android:background">@drawable/rounded_button</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">29sp</item>
         <item name="android:paddingTop">11dp</item>
@@ -160,7 +180,6 @@
     <style name="familyCodeTitle">
         <item name="android:textColor">#ffffffff</item>
         <item name="android:textSize">19sp</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">@font/mb</item>
     </style>
 

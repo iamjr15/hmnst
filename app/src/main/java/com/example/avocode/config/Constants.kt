@@ -21,5 +21,6 @@ object Constants {
         const val PASSWORD = "password"
         const val FAMILY_CODE = "familyCode"
         const val GEO_LOCATION = "geoLocation"
+        const val SHARED_MESSAGE = "sharedMessage"
     }
 }

@@ -186,6 +186,18 @@ class UserImpl(private val activity: Activity) : IUserRepository {
                 }
     }
 
+    override fun <V> updateUserField(phone: String, fieldName: String, filedValue: V, resultListener: ResultListener) {
+        db!!.collection(Constants.USER_COLLECTION).document(phone)
+                .update(fieldName, filedValue)
+                .addOnSuccessListener {
+                    resultListener?.invoke(true)
+                }
+                .addOnFailureListener { e ->
+                    Log.d(TAG, "Error has occured " + e.message)
+                    resultListener?.invoke(false)
+                }
+    }
+
     companion object {
         private val TAG = UserImpl::class.java.simpleName
     }

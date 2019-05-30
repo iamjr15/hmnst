@@ -89,6 +89,21 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val view = findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
+        val user = findById(User::class.java, 1)
+        if (user != null) {
+            if (!checkEmptyStrings(user.uriPath)) {
+                val avatar = Glide.with(this).load(user.uriPath)
+                avatar.into(view.findViewById(R.id.imgAvatar) as ImageView)
+                avatar.into(imageViewUser)
+            }
+            val textViewFullName = view.findViewById<TextView>(R.id.textViewFullName)
+            textViewFullName.text = String.format("%s %s", user.firstName, user.lastName)
+        }
+    }
+
     // Initialize Drawer and load data
     private fun initDrawer() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -108,9 +123,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 avatar.into(imageViewUser)
             }
             val textViewFullName = view.findViewById<TextView>(R.id.textViewFullName)
-            val textViewNumber = view.findViewById<TextView>(R.id.textViewNumber)
             textViewFullName.text = String.format("%s %s", user.firstName, user.lastName)
-            textViewNumber.text = user.phone
             val btnProfile = view.findViewById<MaterialRippleLayout>(R.id.btnProfile)
             btnProfile.setOnClickListener {
                 closeDrawer()
@@ -123,7 +136,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 closeDrawer()
 
                 val intent = Intent(this@HomeActivity, FamilyActivity::class.java)
-                intent.putExtra(getString(R.string.familyCode), user.familyCode)
                 startActivity(intent)
             }
             val btnSignOut = view.findViewById<MaterialRippleLayout>(R.id.btnSignOut)
@@ -189,7 +201,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
 
-        builderSingle.setAdapter(arrayAdapter) { dialog, which -> textViewCity!!.text = arrayAdapter.getItem(which).toString() }
+        builderSingle.setAdapter(arrayAdapter) { dialog, which -> textViewCity!!.text = arrayAdapter.getItem(which)?.toString() }
         val alertDialog = builderSingle.show()
         if (alertDialog.window != null) {
             val alertTitle = alertDialog.window!!.findViewById<TextView>(R.id.alertTitle)

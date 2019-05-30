@@ -24,7 +24,7 @@ class RecyclerViewAdapterFamily(private val familyMemberList: ArrayList<FamilyMe
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, pos: Int) {
         viewHolder.name.text = familyMemberList[pos].fullName
-        glideManager.load(familyMemberList[pos].familyImageUrl).into(viewHolder.image)
+        glideManager.load(familyMemberList[pos].avatarUrl).into(viewHolder.image)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

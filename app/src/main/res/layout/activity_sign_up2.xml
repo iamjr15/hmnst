@@ -1,52 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.SignUpTwoActivity">
-
-    <TextView
-        android:id="@+id/textViewSignUp"
-        style="@style/Title"
-        android:text="@string/signup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgAvatar"
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_photo"
-        app:layout_constraintBottom_toTopOf="@+id/textViewMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
+        tools:context=".activity.SignUpTwoActivity">
 
-    <TextView
-        android:id="@+id/textViewMessage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mb"
-        android:gravity="center"
-        android:text="@string/message_provide_image"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintWidth_percent="0.65"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgAvatar" />
+        <TextView
+            android:id="@+id/textViewSignUp"
+            style="@style/Title"
+            android:text="@string/signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonNext"
-        style="@style/blackButton"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMessage" />
-</android.support.constraint.ConstraintLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvatar"
+            android:src="@drawable/ic_add_photo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.6"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintBottom_toTopOf="@+id/textViewMessage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSignUp" />
+
+        <TextView
+            android:id="@+id/textViewMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mb"
+            android:gravity="center"
+            android:text="@string/message_provide_image"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintWidth_percent="0.65"
+            app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAvatar" />
+
+        <Button
+            android:id="@+id/buttonNext"
+            style="@style/blackButton"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMessage" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

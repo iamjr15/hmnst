@@ -18,4 +18,6 @@ interface IUserRepository {
     fun updateUserFamilyId(firestoreUserModel: FirestoreUserModel, resultListener: ResultListener = null)
 
     fun updateUserGeoLocation(phone: String, newLocation: GeoPoint, resultListener: ResultListener = null)
+
+    fun <V> updateUserField(phone: String, fieldName: String, filedValue: V, resultListener: ResultListener = null)
 }

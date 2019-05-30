@@ -1,114 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activity.SignUpThreeActivity">
-
-    <TextView
-        android:id="@+id/textViewSignUp"
-        style="@style/Title"
-        android:text="@string/signup"
-        app:layout_constraintBottom_toTopOf="@+id/textViewVerifyNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/textViewVerifyNumber"
-        style="@style/verifyTextView"
-        android:fontFamily="@font/mb"
-        android:text="@string/verify_contact_number"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSignUp"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        style="@style/loginEditText"
-        android:enabled="false"
-        android:fontFamily="@font/mb"
-        android:inputType="phone"
-        android:textSize="29sp"
-        android:textAlignment="center"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewVerifyNumber" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearOTP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone">
-
-        <Button
-            android:id="@+id/buttonSendCode"
-            style="@style/ResendButton"
-            android:background="@drawable/rounded_border"
-            android:text="@string/send_code"
-            android:textColor="@color/black"
-            android:visibility="gone" />
+        android:background="@color/white"
+        tools:context=".activity.SignUpThreeActivity">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewSignUp"
+            style="@style/Title"
+            android:text="@string/signup"
+            app:layout_constraintBottom_toTopOf="@+id/textViewVerifyNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/textViewVerifyNumber"
             style="@style/verifyTextView"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/mr"
-            android:visibility="gone" />
+            android:fontFamily="@font/mb"
+            android:text="@string/verify_contact_number"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSignUp"
+            app:layout_constraintVertical_chainStyle="packed" />
 
+        <EditText
+            android:id="@+id/editTextPhone"
+            style="@style/loginEditText"
+            android:enabled="false"
+            android:fontFamily="@font/mb"
+            android:inputType="phone"
+            android:textSize="29sp"
+            android:textAlignment="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewVerifyNumber" />
 
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearOTP"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-        <com.mukesh.OtpView
-            android:id="@+id/viewOTP"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearOTP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone">
+
+            <Button
+                android:id="@+id/buttonSendCode"
+                style="@style/ResendButton"
+                android:background="@drawable/rounded_border"
+                android:text="@string/send_code"
+                android:textColor="@color/black"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/verifyTextView"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/mr"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearOTP"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:inputType="number"
-            android:itemBackground="@drawable/circle_border"
-            android:textColor="@color/black"
-            app:itemCount="6"
-            app:lineColor="@color/black"
-            app:viewType="none">
-            <requestFocus/>
-        </com.mukesh.OtpView>
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-    </LinearLayout>
+            <com.mukesh.OtpView
+                android:id="@+id/viewOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:itemBackground="@drawable/circle_border"
+                android:textColor="@color/black"
+                app:itemCount="6"
+                app:lineColor="@color/black"
+                app:viewType="none">
+                <requestFocus/>
+            </com.mukesh.OtpView>
 
-    <Button
-        android:id="@+id/buttonSignUp"
-        style="@style/nextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/buttonSignUp"
+            style="@style/nextButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

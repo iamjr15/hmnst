@@ -66,6 +66,7 @@
         <EditText
             android:id="@+id/editTextFirstName"
             style="@style/loginEditText"
+            android:drawableEnd="@drawable/ic_edit"
             android:focusable="false"
             android:clickable="false"
             android:hint="@string/first_name"
@@ -79,6 +80,7 @@
         <EditText
             android:id="@+id/editTextLastName"
             style="@style/loginEditText"
+            android:drawableEnd="@drawable/ic_edit"
             android:focusable="false"
             android:clickable="false"
             android:hint="@string/last_name"
@@ -94,11 +96,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextLastName" />
 
-        <TextView
+        <EditText
             android:id="@+id/editTextDOB"
             style="@style/loginEditText"
+            android:drawableEnd="@drawable/ic_edit"
             android:clickable="false"
+            android:focusable="false"
             android:hint="@string/select_date_of_birth"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDOB" />
@@ -110,11 +115,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDOB" />
 
-        <TextView
+        <EditText
             android:id="@+id/editTextGender"
             style="@style/loginEditText"
             android:clickable="false"
-            android:hint="@string/select_date_of_birth"
+            android:inputType="none"
+            android:drawableEnd="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewGender" />

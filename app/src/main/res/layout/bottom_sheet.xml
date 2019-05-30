@@ -10,19 +10,82 @@
     app:behavior_peekHeight="80dp"
     app:layout_behavior="com.example.avocode.utils.UserLockBottomSheetBehavior">
 
-
-    <LinearLayout
-        android:id="@+id/linearBottom"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottomPanel"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:focusable="true"
+        android:clickable="true"
         android:background="@drawable/rounded_dialog"
-        android:orientation="vertical"
         android:visibility="gone">
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/redCircleImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toStartOf="@+id/yellowCircleImage"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/reportCrimeTextView"
+            app:srcCompat="@drawable/red_circle_button" />
+
+        <ImageView
+            android:id="@+id/yellowCircleImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintHorizontal_weight="0.1"
+            app:layout_constraintStart_toEndOf="@+id/redCircleImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/shareLocationTextView"
+            app:srcCompat="@drawable/yellow_circle_button" />
+
+        <TextView
+            android:id="@+id/reportCrimeTextView"
+            style="@style/report_a_crime"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_below="@+id/redCircleImage"
+            android:layout_margin="8dp"
+            android:background="@drawable/btn_selector"
+            android:gravity="center"
+            android:text="@string/report_a_crime"
+            android:textColor="@drawable/txt_color_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/shareLocationTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/redCircleImage" />
+
+        <TextView
+            android:id="@+id/shareLocationTextView"
+            style="@style/shareLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/reportCrimeTextView"
+            android:background="@drawable/btn_selector"
+            android:gravity="center"
+            android:text="@string/share_location"
+            android:textColor="@drawable/txt_color_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reportCrimeTextView"
+            app:layout_constraintTop_toBottomOf="@+id/yellowCircleImage" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageViewUpDown"
@@ -32,4 +95,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         app:srcCompat="@drawable/ic_up" />
+
 </RelativeLayout>

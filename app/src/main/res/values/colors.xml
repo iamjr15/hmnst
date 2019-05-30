@@ -9,4 +9,5 @@
     <color name="colorLogin">#F43B3C</color>
     <color name="colorSignUp">#FAD002</color>
     <color name="colorHeader">#CDDC39</color>
+    <color name="report_crime_border_color">#ff707070</color>
 </resources>

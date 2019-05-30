@@ -12,4 +12,5 @@ class FirestoreUserModel(
     var uriPath: String? = null,
     var password: String? = null,
     var familyCode: String? = null,
-    var geoPosition: GeoPoint? = null)
+    var geoPosition: GeoPoint? = null,
+    var sharedMessage: String? = null)

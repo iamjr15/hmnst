@@ -10,5 +10,6 @@ class FamilyMemberModel(
         var phone: String? = null,
         var uriPath: String? = null,
         var familyCode: String? = null,
-        var geoPosition: GeoPoint? = null
+        var geoLocation: GeoPoint? = null,
+        var sharedMessage: String? = null
 )

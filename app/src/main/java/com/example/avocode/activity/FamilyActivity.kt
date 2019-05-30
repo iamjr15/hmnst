@@ -15,20 +15,25 @@ import com.example.avocode.models.FamilyMemberData
 import com.example.avocode.models.FirestoreUserModel
 import com.example.avocode.repo.UserImpl
 import com.example.avocode.utils.Util
-import com.orm.SugarRecord
+import com.orm.SugarRecord.findById
 import dbmodel.User
 import kotlinx.android.synthetic.main.activity_family.*
 
 
 class FamilyActivity: AppCompatActivity() {
 
-    val familyList = ArrayList<FamilyMemberData>()
+    private val familyList = ArrayList<FamilyMemberData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family)
-        val oldFamilyCode = intent.getStringExtra(getString(R.string.familyCode))
-        Util.showFamilyCode(textViewFamilyCode, oldFamilyCode)
+
+        var oldFamilyCode = ""
+        val user = findById(User::class.java, 1)
+        if (user != null) {
+            oldFamilyCode = user.familyCode
+            Util.showFamilyCode(textViewFamilyCode, oldFamilyCode)
+        }
 
         btnAddToFamily.setOnClickListener {
             val dialog = Dialog(this@FamilyActivity)
@@ -53,7 +58,6 @@ class FamilyActivity: AppCompatActivity() {
                     }
                     else -> {
                         //Get  user's profile
-                        val user = SugarRecord.findById(User::class.java, 1)
                         if (user != null) {
                             val newFamilyCode = etFamilyCode.text.toString()
                             val userModel = FirestoreUserModel().apply {
@@ -64,11 +68,14 @@ class FamilyActivity: AppCompatActivity() {
                                 phone = user.phone
                                 uriPath = user.uriPath
                                 familyCode = newFamilyCode// Set New Family Code
+                                user.familyCode = newFamilyCode
+                                user.save()
                             }
-                            UserImpl(this@FamilyActivity).updateUserFamilyId(userModel) { success ->
+                            val userImpl = UserImpl(this@FamilyActivity)
+                            userImpl.updateUserFamilyId(userModel) { success ->
                                 if(success) {
                                     Util.showFamilyCode(textViewFamilyCode, newFamilyCode)
-                                    //familyList.add()
+                                    showFamily(newFamilyCode)
                                 }
                             }
                             dialog.dismiss()
@@ -88,23 +95,22 @@ class FamilyActivity: AppCompatActivity() {
             dialog .show()
         }
 
-//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("ya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yrega", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yaerh", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("tjya", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-//        familyList.add(FamilyMemberData("yytja", "https://firebasestorage.googleapis.com/v0/b/hmnst001.appspot.com/o/images%2FMI_29032019_1322.jpg?alt=media&token=b21704ed-19be-418f-a3ad-05be953e7793"))
-
         rvFamilyGrid.apply {
             val gridLayoutManager = GridLayoutManager(context, 3)
             layoutManager = gridLayoutManager
             adapter = RecyclerViewAdapterFamily(familyList)
+        }
+
+        showFamily(oldFamilyCode)
+    }
+
+    private fun showFamily(familyCode: String) {
+        UserImpl(this@FamilyActivity).getFamilyMembers(familyCode) { members ->
+            familyList.clear()
+            familyList.addAll(members.map {
+                FamilyMemberData("${it.firstName} ${it.lastName}", it.uriPath!!)
+            })
+            rvFamilyGrid.adapter?.notifyDataSetChanged()
         }
     }
 }

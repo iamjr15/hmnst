@@ -83,4 +83,7 @@
     <string name="or">OR</string>
     <string name="share_family_code_description">SHARE YOUR FAMILY CODE WITH YOUR ACQUAINTANCES, AND BE SAFER</string>
     <string name="share_code">SHARE CODE</string>
+    <string name="choose_your_gender">Choose your gender</string>
+    <string name="report_a_crime">REPORT A CRIME</string>
+    <string name="share_location">SHARE LOCATION</string>
 </resources>
